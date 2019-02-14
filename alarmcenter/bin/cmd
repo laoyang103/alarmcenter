@@ -1,0 +1,723 @@
+    1  ifconfig 
+    2  ping 192.168.100.1
+    3  ping 192.168.100.2
+    4  passwd
+    5  ifconfig 
+    6  ps aux | grep ipm
+    7  top
+    8  mysql -uroot -p123456 ipm
+    9  ps aux | grep ipm
+   10  /usr/local/var/chkzxb.sh 
+   11  ps aux | grep ipm
+   12  vi /usr/local/var/chkzxb.sh 
+   13  ps aux | grep ipm
+   14  /usr/local/var/chkzxb.sh 
+   15  ps aux | grep ipm
+   16  crontab -l
+   17  cd /usr/local/var/
+   18  vi monitor.log 
+   19  top
+   20  ps aux | grep ipm
+   21  top
+   22  ifconfig 
+   23  vi /etc/network/interfaces
+   24  reboot 
+   25  ls
+   26  last
+   27  ls
+   28  cd /tmp/
+   29  ls
+   30  mysql -uroot -p123456 ipm
+   31  mysql -uroot -p123456 ipm < ipm_table.sql 
+   32  mysql -uroot -p123456 ipm < ipm_data.sql 
+   33  export LANG=en_US.UTF-8
+   34  mysql -uroot -p123456 ipm < ipm_table.sql 
+   35  mysql -uroot -p123456 ipm < ipm_data.sql 
+   36  mysql -uroot -p123456 ipm < ipm_proto_plan.sql 
+   37  mysql -uroot -p123456 ipm < ipm_public_proto_plan.sql 
+   38  mysql -uroot -p123456 ipm < ip_cn.sql 
+   39  ls
+   40  crontab -l
+   41  rm /opt/apache-tomcat-8.0.45/webapps/ROOT* -r
+   42  killall java
+   43  ll /opt/apache-tomcat-8.0.45/webapps/
+   44  ls
+   45  cp ROOT.war /opt/apache-tomcat-8.0.45/webapps/
+   46  ls
+   47  ps aux |grep java
+   48  cd /opt/apache-tomcat-8.0.45/logs/
+   49  ls
+   50  tail -f catalina.out 
+   51  ls
+   52  vi catalina.out 
+   53  tail -f catalina.out 
+   54  ls
+   55  vi catalina.2019-02-12.log 
+   56  vi localhost.2019-02-12.log 
+   57  date
+   58  vi localhost.2019-02-12.log 
+   59  cd 
+   60  ls
+   61  cd /opt/
+   62  ls
+   63  wget http://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+   64  ls
+   65  tar -zxvf apache-maven-3.6.0-bin.tar.gz 
+   66  ls
+   67  cd apache-maven-3.6.0/
+   68  ls
+   69  vi /etc/profile
+   70  cd ..
+   71  ls
+   72  scp 192.168.1.70:/root/ipmjdk*.deb .
+   73  ls
+   74  dpkg -i ipmjdk-1.8.131.deb 
+   75  ls
+   76  cd
+   77  ls
+   78  cd weixinradio/src/main/
+   79  vi ./java/com/qianmi/weixin/WeixinComponent.java
+   80  apt-get install ctags
+   81  vi ./java/com/qianmi/weixin/WeixinComponent.java
+   82  ls
+   83  cd ..
+   84  cd 
+   85  kls
+   86  ls
+   87  cd alarm/sql/
+   88  ls
+   89  mysql -uroot -p123456 ipm
+   90  export LANG=en_US.UTF-8
+   91  mysql -uroot -p123456 wxpm < alarm.sql 
+   92  ls
+   93  df
+   94  mysql -uroot -p123456 wxpm 
+   95  ls
+   96  cd ..
+   97  ls
+   98  cdb i
+   99  cdbi
+  100  cd bin/
+  101  ls
+  102  java -jar alarm-server.jar wechat wechat_1 
+  103  java -jar alarm-server.jar
+  104  java -jar alarm-server.jar wechat wechat_1
+  105  java -jar alarm-sender.jar wechat wechat_1
+  106  cd ..
+  107  ls
+  108  cd alarm-sender/
+  109  ls
+  110  tree
+  111  ls
+  112  vi src/main/resources/properties/product/application.properties 
+  113  vi src/main/resources/properties/product/alarm-config.properties 
+  114  cd ..
+  115  ls
+  116  cd bin/
+  117  ls
+  118  java -jar alarm-sender.jar wechat wechat_1
+  119  cd /opt/apache-tomcat-8.0.45/webapps/
+  120  ls
+  121  ll
+  122  cd ROOT/
+  123  ls
+  124  cd WEB-INF/
+  125  ls
+  126  cd classes/
+  127  ls
+  128  tree
+  129  ls
+  130  cd ..
+  131  ls
+  132  killall java
+  133  ls
+  134  rm ROOT* -r
+  135  killall java
+  136  rm ROOT* -r
+  137  ps aux | grep ipm
+  138  ps aux | grep java
+  139  top
+  140  ps aux | grep java
+  141  ll
+  142  killall java
+  143  mv /tmp/ROOT.war .
+  144  ll
+  145  ps aux | grep java
+  146  ll
+  147  cd ROOT/
+  148  ls
+  149  cd WEB-INF/
+  150  ls
+  151  cd classes/
+  152  ls
+  153  cd ..
+  154  ls
+  155  rm ROOT* -r
+  156  killall java
+  157  mv /tmp/ROOT.war  .
+  158  ll
+  159  ls
+  160  cd 
+  161  ls
+  162  vi /etc/apt/sources.list
+  163  apt-get update
+  164  apt-get install git
+  165  ls
+  166  git clone https://github.com/QianmiOpen/weixinradio.git
+  167  ls
+  168  cd weixinradio/
+  169  ls
+  170  tree
+  171  ls
+  172  cat pm
+  173  cat pom.xml 
+  174  ls
+  175  mvn
+  176  apt-get install maven
+  177  ls
+  178  source /etc/profile
+  179  ls
+  180  mvn
+  181  ls
+  182  vi pom.xml 
+  183  mvn install
+  184  ls
+  185  cd src/main/
+  186  ls
+  187  cd webapp/WEB-INF/
+  188  ls
+  189  mkdir lib
+  190  ls
+  191  cd lib/
+  192  ls
+  193  find /root/.m2/repository/ -name *.jar
+  194  find /root/.m2/repository/ -name *.jar | wc -l
+  195  cp `find /root/.m2/repository/ -name *.jar` .
+  196  ls
+  197  cd ..
+  198  ls
+  199  cd ..
+  200  ls
+  201  cd ..
+  202  ls
+  203  mkdir webapp/WEB-INF/classes
+  204  ls
+  205  javac -g -encoding utf-8 -Djava.ext.dirs=./webapp/WEB-INF/lib  -d webapp/WEB-INF/classes `find ./java/ -name *.java`
+  206  ls
+  207  cp resources/* webapp/WEB-INF/classes/ -r
+  208  javac -g -encoding utf-8 -Djava.ext.dirs=./webapp/WEB-INF/lib  -d webapp/WEB-INF/classes `find ./java/ -name *.java`
+  209  ls
+  210  cd 
+  211  ls
+  212  rm weixinradio/ -r
+  213  ls
+  214  git clone https://github.com/Junety-C/alarm.git
+  215  ls
+  216  cd alarm/
+  217  ls
+  218  cd sql/
+  219  ls
+  220  vi alarm.sql 
+  221  cd ..
+  222  ls
+  223  cd sql/
+  224  ls
+  225  vi alarm.sql 
+  226  ls
+  227  cd ..
+  228  ls
+  229  find . -name resources/properties/product
+  230  find . -name product
+  231  vi ./alarm-server/src/main/resources/properties/product/logback.xml 
+  232  vi ./alarm-server/src/main/resources/properties/product/application.properties 
+  233  vi ./alarm-server/src/main/resources/properties/product/redis.properties 
+  234  vi ./alarm-sender/src/main/resources/properties/product/application.properties 
+  235  vi ./alarm-server/src/main/resources/properties/product/application.properties 
+  236  vi ./alarm-sender/src/main/resources/properties/product/application.properties 
+  237  vi ./alarm-sender/src/main/resources/properties/product/
+  238  vi ./alarm-web/src/main/resources/properties/product/application.properties 
+  239  vi ./alarm-server/src/main/resources/properties/product/application.properties 
+  240  vi ./alarm-web/src/main/resources/properties/product/application.properties 
+  241  ls
+  242  mvn clean package -Pproduct
+  243  ls
+  244  find . -name *.jar
+  245  ls
+  246  mkdir bin
+  247  ls
+  248  cd bin/
+  249  ls
+  250  find .. -name *.jar 
+  251  cp `find .. -name *.jar ` .
+  252  ls
+  253  java -jar alarm-server.jar
+  254  java -jar alarm-server.jar wechat wechat_1
+  255  cd ..
+  256  ls
+  257  find . -name *.java
+  258  find . -name *.java | wc -l
+  259  cat `find . -name *.java | wc -l` | wc -l
+  260  cat `find . -name *.java` | wc -l
+  261  ls
+  262  cd alarm-api/
+  263  ls
+  264  tree
+  265  ls
+  266  cd src/
+  267  ls
+  268  tree
+  269  cd main/java/cn/junety/alarm/api/impl/
+  270  ls
+  271  vi AlarmSender.java 
+  272  cd ..
+  273  tree
+  274  cd cn/junety/alarm/api/
+  275  ls
+  276  vi AlarmClient.java 
+  277  ls
+  278  cd ..
+  279  tree
+  280  vi `find . -name *.java`
+  281  cd ..
+  282  grep AlarmClient -rwn .
+  283  vi ./alarm-api/src/main/java/cn/junety/alarm/api/AlarmClient.java
+  284  vi ./alarm-api/src/test/java/Test.java
+  285  ls
+  286  cd alarm-se
+  287  ls
+  288  cd alarm-server/
+  289  ls
+  290  tree
+  291  vi src/main/resources/mybatis-config.xml 
+  292  vi src/main/resources/properties/product/application.properties 
+  293  ls
+  294  grep port -rwn .
+  295  vi src/main/resources/properties/product/application.properties 
+  296  ls
+  297  cd ..
+  298  mvn clean package -Pproduct
+  299  cd bin/
+  300  ls
+  301  rm *.jar
+  302  ls
+  303  cp `find .. -name *.jar ` .
+  304  ls
+  305  cd logs/
+  306  ls
+  307  cd server/
+  308  ls
+  309  tree
+  310  tree -h
+  311  cd error/
+  312  ls
+  313  vi error.log 
+  314  ls
+  315  cd ..
+  316  ls
+  317  java -jar alarm-server.jar
+  318  cd alarm/
+  319  ps aux |grepjava
+  320  ps aux |grep java
+  321  killall java
+  322  crontab -e
+  323  ls
+  324  killall ipmcomm 
+  325  killall ipmcoll 
+  326  ls
+  327  cd bin/
+  328  ls
+  329  java -jar alarm-web.jar
+  330  l
+  331  git clone https://github.com/laoyang103/laoyang-vim-conf
+  332  cd laoyang-vim-conf/
+  333  ls
+  334  ./INSTALL 
+  335  cd alarm/alarm-base/
+  336  ls
+  337  tree
+  338  ls
+  339  cd ..
+  340  ls
+  341  cd alarm-server/
+  342  ls
+  343  tree
+  344  ls
+  345  cd ..
+  346  ls
+  347  ll
+  348  ps aux | grep redis
+  349  ls
+  350  mvn clean package -Pproduct
+  351  ls
+  352  netstat -anp | grep java
+  353  ls
+  354  ps aux| grep java
+  355  cd bin/
+  356  ls
+  357  javac -encoding utf-8 -Djava.ext.dirs=. Test.java 
+  358  ls
+  359  javac -encoding utf-8 -Djava.ext.dirs=. Test.java; java -encoding utf-8 -Djava.ext.dirs=. Test
+  360  javac -encoding utf-8 -Djava.ext.dirs=. Test.java; java -Djava.ext.dirs=. Test
+  361  redis-check-dump 
+  362  redis-cli 
+  363  ls
+  364  java -jar alarm-sender.jar 
+  365  java -jar alarm-sender.jar wechat laoyang
+  366  cp ../alarm-sender/target/alarm-sender.jar .
+  367  java -jar alarm-sender.jar wechat laoyang
+  368  cp ../alarm-sender/target/alarm-sender.jar .
+  369  java -jar alarm-sender.jar wechat laoyang
+  370  apt-get install libxtst6
+  371  java -jar alarm-sender.jar wechat laoyang
+  372  apt-get install libxi6
+  373  java -jar alarm-sender.jar wechat laoyang
+  374  top
+  375  java -jar alarm-sender.jar wechat laoyang
+  376  cp ../alarm-sender/target/alarm-sender.jar .
+  377  java -jar alarm-sender.jar wechat laoyang
+  378  ls
+  379  df
+  380  ls
+  381  cd logs
+  382  ls
+  383  cd sender
+  384  ls
+  385  cd laoyang
+  386  ls
+  387  ll
+  388  du -sh *
+  389  cd ..
+  390  ls
+  391  rm sender -r
+  392  ls
+  393  df
+  394  df -h
+  395  cd ..
+  396  ls
+  397  ps aux| grep java
+  398  java -jar alarm-api.jar 
+  399  history | grep Test
+  400  javac -encoding utf-8 -Djava.ext.dirs=. Test.java; java -Djava.ext.dirs=. Test
+  401  java -jar alarm-web.jar &
+  402  history | grep send
+  403  java -jar alarm-sender.jar wechat laoyang
+  404  redis-cli 
+  405  cp ../alarm-sender/target/alarm-sender.jar .
+  406  java -jar alarm-sender.jar wechat laoyang
+  407  history | grep Test
+  408  javac -encoding utf-8 -Djava.ext.dirs=. Test.java; java -Djava.ext.dirs=. Test
+  409  java -jar alarm-sender.jar wechat laoyang
+  410  javac -encoding utf-8 -Djava.ext.dirs=. Test.java; java -Djava.ext.dirs=. Test
+  411  java -jar alarm-sender.jar mail laoyang
+  412  javac -encoding utf-8 -Djava.ext.dirs=. Test.java; java -Djava.ext.dirs=. Test
+  413  java -jar alarm-sender.jar mail laoyang
+  414  javac -encoding utf-8 -Djava.ext.dirs=. Test.java; java -Djava.ext.dirs=. Test
+  415  java -jar alarm-sender.jar mail laoyang
+  416  javac -encoding utf-8 -Djava.ext.dirs=. Test.java; java -Djava.ext.dirs=. Test
+  417  cp ../alarm-sender/target/alarm-sender.jar .
+  418  java -jar alarm-sender.jar mail laoyang
+  419  javac -encoding utf-8 -Djava.ext.dirs=. Test.java; java -Djava.ext.dirs=. Test
+  420  java -jar alarm-sender.jar sms laoyang
+  421  java -jar alarm-sender.jar mail laoyang
+  422  mysql -uroot -p123456 wxpm 
+  423  cat ~/.bashrc 
+  424  cd alarm/bin/
+  425  ls
+  426  java -jar alarm-web.jar 
+  427  ls
+  428  rm * -r
+  429  ls
+  430  find .. -name *.jar 
+  431  cp `find .. -name *.jar` .
+  432  ls
+  433  java -jar alarm-web.jar 
+  434  killall java
+  435  ls
+  436  java -jar alarm-server.jar wechat wechat_1
+  437  java -jar alarm-server.jar *
+  438  java -jar alarm-server.jar &
+  439  java -jar alarm-web.jar *
+  440  java -jar alarm-web.jar &
+  441  ps aux |grep java
+  442  java -jar alarm-api.jar 
+  443  ls
+  444  tree logs/ -h
+  445  tree -h
+  446  vi logs/server/debug/debug.log 
+  447  vi logs/server/info/info.log 
+  448  ls
+  449  export LANG=en_US.UTF-8
+  450  vi logs/server/info/info.log 
+  451  ls
+  452  tcpdump -i lo port 8089
+  453  tcpdump -i lo port 8089 -w a.pcap
+  454  tshark -q -r a.pcap -z follow,stream,tcp,0
+  455  tshark -q -r a.pcap -z follow,tcp,ascii,0
+  456  export LANG=en_US.UTF-8
+  457  vi a.pcap 
+  458  tshark -q -r a.pcap -z follow,tcp,ascii,0
+  459  tcpdump -i lo port 8089 -w a.pcap
+  460  tshark -q -r a.pcap -z follow,tcp,ascii,0
+  461  ls
+  462  tail -f logs/sender/laoyang/debug/debug.log 
+  463  tail -f logs/sender/laoyang/info/info.log 
+  464  ps aux| grep redis
+  465  redis-cli 
+  466  killall java
+  467  java -jar alarm-server.jar
+  468  java -jar alarm-server.jar &
+  469  redis-cli 
+  470  ls
+  471  tail -f logs/sender/laoyang/debug/debug.log 
+  472  ll
+  473  df
+  474  tail -f logs/sender/laoyang/debug/debug.log 
+  475  vi logs/sender/laoyang/debug/debug.log 
+  476  vi logs/sender/laoyang/error/error.log 
+  477  rm logs/sender/ -r
+  478  tail -f logs/sender/laoyang/debug/debug.log 
+  479  vi logs/sender/laoyang/debug/debug.log 
+  480  vi logs/sender/laoyang/info/info.log 
+  481  history | grep Test
+  482  tail -f logs/sender/laoyang/debug/debug.log 
+  483  ls
+  484  cd alarm/bin/
+  485  ls
+  486  java -jar alarm-server.jar 
+  487  ls
+  488  rm alarm-server.jar 
+  489  cp `find .. -name alarm-server.jar ` .
+  490  ls
+  491  java -jar alarm-server.jar 
+  492  java -jar alarm-server.jar &
+  493  java -jar alarm-web.jar &
+  494  ls
+  495  tree
+  496  tree -h
+  497  ls
+  498  java -cp alarm-api.jar Test
+  499  ls
+  500  jar -xvf alarm-api.jar 
+  501  ls
+  502  rm cn/ META-INF/ -r
+  503  ls
+  504  cp ../alarm-api/target/test-classes/Test.class .
+  505  ls
+  506  java -cp alarm-api.jar Test
+  507  ls
+  508  java  Test
+  509  java -Djava.ext.dirs=. Test
+  510  find /root/.m2/ -name "*slf4j*"
+  511  find /root/.m2/ -name "*slf4j*" | grep jar
+  512  cp /root/.m2/repository/org/slf4j/slf4j-api/1.7.24/slf4j-api-1.7.24.jar .
+  513  ls
+  514  java -Djava.ext.dirs=. Test
+  515  history 
+  516  find /root/.m2/ -name "*alibaba*" | grep jar
+  517  find /root/.m2/ -name "*fast*" | grep jar
+  518  cp /root/.m2/repository/com/alibaba/fastjson/1.2.29/fastjson-1.2.29.jar .
+  519  java -Djava.ext.dirs=. Test
+  520  ls
+  521  vi Test.java
+  522  ls
+  523  vi Test.java 
+  524  ls
+  525  cd ..
+  526  ls
+  527  cd alarm-server/
+  528  ls
+  529  tree
+  530  ls
+  531  vi src/main/java/cn/junety/alarm/server/channel/WechatChannel.java 
+  532  cd ..
+  533  ls
+  534  vi alarm-server/src/main/java/cn/junety/alarm/server/channel/WechatChannel.java 
+  535  ls
+  536  tree alarm-base/src/main/java/cn/junety/alarm/base/
+  537  ls
+  538  cd alarm-sender/
+  539  cd ..
+  540  ls
+  541  vi alarm-sender/src/main/java/cn/junety/alarm/sender/wechat/WechatClient.java 
+  542  vi alarm-sender/src/main/java/cn/junety/alarm/sender/Bootstrap.java 
+  543  vi alarm-sender/src/main/resources/properties/product/application.properties 
+  544  vi alarm-sender/src/main/resources/properties/product/alarm-config.properties 
+  545  vi alarm-sender/src/main/java/cn/junety/alarm/sender/configuration/Configuration.java 
+  546  vi alarm-sender/src/main/resources/properties/product/alarm-config.properties 
+  547  mvn clean package -Pproduct
+  548  vi alarm-sender/src/main/resources/properties/product/alarm-config.properties 
+  549  mvn clean package -Pproduct
+  550  vi alarm-sender/src/main/java/cn/junety/alarm/sender/wechat/WechatClient
+  551  vi alarm-sender/src/main/java/cn/junety/alarm/sender/wechat/WechatClient.java 
+  552  mvn clean package -Pproduct
+  553  vi alarm-sender/src/main/java/cn/junety/alarm/sender/wechat/WechatClient.java 
+  554  vi alarm-base/src/main/java/cn/junety/alarm/base/redis/JedisFactory.java 
+  555  vi alarm-sender/src/main/resources/properties/product/redis.properties 
+  556  vi alarm-sender/src/main/resources/properties/product/alarm-config.properties 
+  557  vi alarm-sender/src/main/resources/properties/product/application.properties 
+  558  vi alarm-sender/src/main/resources/properties/product/redis.properties 
+  559  vi alarm-sender/src/main/resources/properties/product/logback.xml 
+  560  ls
+  561  mvn clean package -Pproduct
+  562  vi alarm-sender/src/main/java/cn/junety/alarm/sender/wechat/WechatClient.java 
+  563  grep laoyang103 -rwn .
+  564  grep laoyang103 -rwn . | grep java
+  565  vi alarm-sender/src/main/java/cn/junety/alarm/sender/wechat/WechatClientProxy.java 
+  566  ls
+  567  cd alarm-se
+  568  cd alarm-sender/
+  569  ls
+  570  vi src/main/java/cn/junety/alarm/sender/Bootstrap.java 
+  571  vi alarm-sender/src/main/resources/properties/product/application.properties 
+  572  cd ..
+  573  vi alarm-sender/src/main/resources/properties/product/application.properties 
+  574  vi alarm-sender/src/main/resources/properties/product/alarm-config.properties 
+  575  mvn clean package -Pproduct
+  576  vi alarm-sender/src/main/java/cn/junety/alarm/sender/client/impl/MailClient.java 
+  577  vi alarm-sender/src/main/java/cn/junety/alarm/sender/Bootstrap.java 
+  578  ls
+  579  mysql -uroot -p123456 wxpm 
+  580  vi ~/.bashrc 
+  581  source ~/.bashrc 
+  582  mysql -uroot -p123456 wxpm 
+  583  df
+  584  ls
+  585  cd alarm/
+  586  ls
+  587  cd alarm-se
+  588  cd alarm-server/
+  589  ls
+  590  cd ..
+  591  ls
+  592  find . -name dev
+  593  vi ./alarm-server/src/main/resources/properties/dev/application.properties 
+  594  vi ./alarm-server/src/main/resources/properties/product/application.properties 
+  595  ls
+  596  cd alarm-server/
+  597  ls
+  598  cd src/main/java/cn/junety/alarm/server/
+  599  ls
+  600  tree
+  601  vi Bootstrap.java 
+  602  ls
+  603  cd ..
+  604  cd alarm-web/
+  605  ls
+  606  cd src/main/resources/properties/product/
+  607  ls
+  608  vi application.properties 
+  609  vi redis.properties 
+  610  vi logback.xml 
+  611  cd ..
+  612  ls
+  613  cd ..
+  614  ls
+  615  cd alarm-server/
+  616  ls
+  617  vi src/main/resources/mybatis-config.xml 
+  618  vi src/main/resources/properties/product/application.properties 
+  619  vi src/main/resources/properties/product/logback.xml 
+  620  vi src/main/resources/properties/product/redis.properties 
+  621  ls
+  622  cd ..
+  623  ls
+  624  cd alarm-api/
+  625  ls
+  626  vi
+  627  ls
+  628  vi src/test/java/Test.java 
+  629  cd ..
+  630  ls
+  631  cd alarm-server/
+  632  ls
+  633  vi src/main/java/cn/junety/alarm/server/service/AlarmService.java 
+  634  ls
+  635  cd 
+  636  ls
+  637  vi all.py
+  638  rm ~/.vimrc 
+  639  vi all.py
+  640  cd laoyang-vim-conf/
+  641  ls
+  642  ./INSTALL 
+  643  cd ..
+  644  ls
+  645  python all.py 
+  646  pip install redis
+  647  scp 192.168.1.70:/root/get-pip.py .
+  648  ls
+  649  python get-pip.py 
+  650  pip install redis
+  651  python all.py 
+  652  cd alarm/bin/
+  653  ls
+  654  cd logs/
+  655  ls
+  656  cd web/
+  657  ls
+  658  tree
+  659  tree -h
+  660  date
+  661  ls
+  662  cd debug/
+  663  ls
+  664  vi debug.
+  665  vi debug.log 
+  666  ls
+  667  cd ..
+  668  ls
+  669  cd error/
+  670  ls
+  671  vi error.
+  672  vi error.log 
+  673  ls
+  674  apt-get install redis-server 
+  675  ps aux|grep redis
+  676  ls
+  677  cd ..
+  678  ls
+  679  cd logs/web/
+  680  tree -h
+  681  ls
+  682  cd info/
+  683  ls
+  684  vi info.log 
+  685  ls
+  686  cd ..
+  687  ls
+  688  cd debug/
+  689  ls
+  690  vi debug.log 
+  691  ls
+  692  cd ..
+  693  ls
+  694  cd server/
+  695  tree
+  696  tree -h
+  697  vi debug/debug.log 
+  698  ls
+  699  tree -h
+  700  vi debug/debug.log 
+  701  ls
+  702  cd info/
+  703  ls
+  704  tail info.log 
+  705  tail -f info.log 
+  706  cd ..
+  707  ls
+  708  cd debug/
+  709  ls
+  710  tail debug.log 
+  711  tail -f debug.log 
+  712  ls
+  713  cd 
+  714  ls
+  715  cd /tmp/
+  716  ls
+  717  ll
+  718  cd alarm/
+  719  ls
+  720  cd bin/
+  721  ls
+  722  history | grep Test
+  723  history > cmd
