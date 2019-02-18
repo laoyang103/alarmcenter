@@ -28,8 +28,13 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        String url = request.getRequestURL().toString();
         String identification = userLoginStatusService.getIdentificationFromLoginStatus(request);
         User user = userService.getUserByIdentification(identification);
+
+        if (url.contains("wxsvc")) {
+            return true;
+        }
 
         if (user == null) {
             logger.debug("login status check fail, identification:{}", identification);
