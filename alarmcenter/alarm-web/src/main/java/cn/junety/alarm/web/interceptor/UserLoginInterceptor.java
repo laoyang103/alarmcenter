@@ -32,7 +32,7 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
         String identification = userLoginStatusService.getIdentificationFromLoginStatus(request);
         User user = userService.getUserByIdentification(identification);
 
-        if (url.contains("wxsvc")) {
+        if (url.contains("wxsvc") || url.contains("wxbind")) {
             return true;
         }
 
