@@ -102,4 +102,14 @@ public class PageController extends BaseController {
 
         return new ModelAndView("log");
     }
+
+    @RequestMapping(value = "/wxbind", method = RequestMethod.GET)
+    public ModelAndView toWxbindPage(HttpServletRequest request, Model model) {
+      String wxopenid = request.getParameter("wxopenid");
+      logger.info("GET /wxbind, wxopenid:{}", wxopenid);
+
+      model.addAttribute("from_wxopenid", wxopenid);
+
+      return new ModelAndView("wxbind");
+    }
 }

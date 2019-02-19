@@ -5,11 +5,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import cn.junety.alarm.web.vo.ReplyTextMsg;
+import cn.junety.alarm.base.entity.User;
+import cn.junety.alarm.web.dao.UserDao;
 
 import java.util.Map;
 
 @Service
 public class WxsvcService {
+
+  @Autowired
+  private UserDao userDao;
 
   private static String WECHART_MSGTYPE_TEXT = "text";
   private static String WECHART_MSGTYPE_EVENT = "event";
@@ -60,5 +65,10 @@ public class WxsvcService {
     } else {
       return "";
     }
+  }
+
+  public void bindWxOpenid(User user, String wxopenid) {
+    user.setWechat(wxopenid);
+    userDao.update(user);
   }
 }

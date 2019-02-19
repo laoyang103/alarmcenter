@@ -4,8 +4,8 @@ package cn.junety.alarm.web.vo;
  * Created by caijt on 2017/4/2.
  */
 public class LoginForm {
-    private String username;
-    private String password;
+    protected String username;
+    protected String password;
 
     public String getUsername() {
         return username;

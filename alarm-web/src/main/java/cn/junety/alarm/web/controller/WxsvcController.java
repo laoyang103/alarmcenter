@@ -5,8 +5,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
-import cn.junety.alarm.web.common.MessageUtil;
+import org.springframework.web.bind.annotation.*;
+import cn.junety.alarm.base.entity.User;
+import cn.junety.alarm.base.entity.UserTypeEnum;
 import cn.junety.alarm.web.service.WxsvcService;
+import cn.junety.alarm.web.vo.WxbindForm;
+import cn.junety.alarm.web.common.MessageUtil;
+import cn.junety.alarm.web.common.ResponseHelper;
 
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +21,10 @@ import javax.servlet.http.HttpServletRequest;
  * 页面跳转API
  */
 @RestController
-public class WxsvcController {
+public class WxsvcController extends BaseController {
 
   @Autowired
-    private WxsvcService wxsvcService;
+  private WxsvcService wxsvcService;
 
   @GetMapping("/wxsvc")
   public String wxsvcGet(HttpServletRequest request) {
@@ -41,5 +46,19 @@ public class WxsvcController {
       e.printStackTrace();
     }
     return retMsg;
+  }
+
+  @RequestMapping(value = "/wxbind", method = RequestMethod.POST)
+  public String wxbind(HttpServletRequest request, @RequestBody WxbindForm wxbindForm) {
+    logger.info("POST /wxbind, wxbindForm:{}", JSON.toJSONString(wxbindForm));
+
+    User user = userService.getUserByAccount(wxbindForm.getUsername());
+    if (user != null && (UserTypeEnum.ADMIN_USER.value().equals(user.getType())
+          || UserTypeEnum.NORMAL_USER.value().equals(user.getType()))) {
+      wxsvcService.bindWxOpenid(user, wxbindForm.getWxopenid());
+      userLoginStatusService.addLoginStatus(request, user.getIdentification());
+      return ResponseHelper.buildResponse(2000, "status", "success");
+    }
+    return ResponseHelper.buildResponse(4004, "reason", "invalid username or password");
   }
 }
