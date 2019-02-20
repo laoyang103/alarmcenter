@@ -71,7 +71,7 @@ public abstract class Client {
     private int sendWithRetry(String message) {
         int sendNumber = 0;
         for(int i = 1; i <= MAX_RETRY_TIMES && sendNumber == 0; i++) {
-            logger.info("send alarm fail, retry times:{}, data:{}", i, message);
+            logger.info("send alarm, try times:{}, data:{}", i, message);
             sendNumber = send(message);
         }
         if (sendNumber > 0) {

@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import cn.junety.alarm.web.vo.ReplyTextMsg;
+import cn.junety.alarm.base.entity.ReplyTextMsg;
 import cn.junety.alarm.base.entity.User;
 import cn.junety.alarm.web.dao.UserDao;
 
