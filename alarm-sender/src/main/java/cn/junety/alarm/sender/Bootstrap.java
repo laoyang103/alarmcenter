@@ -28,9 +28,6 @@ public class Bootstrap {
             case "wechat":
                 ClientFactory.buildWechatClient(name).start();
                 break;
-            case "qq":
-                ClientFactory.buildQQClient(name).start();
-                break;
             case "sms":
                 throw new RuntimeException("没钱发啊, 不支持了!");
                 // break;
