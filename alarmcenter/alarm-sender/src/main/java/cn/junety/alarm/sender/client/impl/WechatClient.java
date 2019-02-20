@@ -3,10 +3,16 @@ package cn.junety.alarm.sender.client.impl;
 import java.util.Map;
 import java.util.List;
 import java.util.HashMap;
+import java.io.IOException;
 
 import cn.junety.alarm.base.common.ConfigKey;
 import cn.junety.alarm.base.entity.QueueMessage;
 import cn.junety.alarm.sender.client.Client;
+import cn.junety.alarm.sender.entity.AccessToken;
+import cn.junety.alarm.sender.entity.TemplateMsg;
+import cn.junety.alarm.sender.entity.TemplateMsgField;
+import cn.junety.alarm.sender.util.HttpUtil;
+import cn.junety.alarm.sender.util.WechatUtil;
 import com.alibaba.fastjson.JSON;
 
 /**
@@ -14,19 +20,19 @@ import com.alibaba.fastjson.JSON;
  */
 public class WechatClient extends Client {
 
+  private String   WX_TEMPLATE_ID = "LsEJZoMCrli5-YV7JN4cmQbNRMtOFe4FYmkgNU9EIhI";
   private String[] WX_TEMPLATE_KEY = new String[]{"first", "remark", "keyword1", "keyword4", "keyword2", "keyword5", "keyword3"};
-  private String WX_TEMPLATE_ID = "LsEJZoMCrli5-YV7JN4cmQbNRMtOFe4FYmkgNU9EIhI";
-  private String WX_ACCESS_TOKEN = "18_5p9y2T1H7l00D7rQ359WjOQd2HJukvOFASuoHFs2brG-anVSGJ2OqOaY_Mu_ApPMsEcnqlVfyaczqQ0FHkhWq-248mHLhk_nyIGaYcpLwM8lrh3yWFzhmUP4RN1K3sSgvJDu4C3tDSzurI1mVWUdACAMNL";
 
   public WechatClient(String name, String queueName) {
     super(name, queueName, "wechat");
   }
 
-  private void sendWechat(String toUser, String content) {
+  private void sendTemplate(String toUser, String content) {
     int i;
-    TemplateMsg tm = new TemplateMsg();
     Map<String, Object> dataMap = new HashMap<String, Object>();
+    String sendUrl = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
 
+    TemplateMsg tm = new TemplateMsg();
     String[] fieldSplit = content.split("\n");
     for (i = 0; i < WX_TEMPLATE_KEY.length; i++) {
       TemplateMsgField tmf = new TemplateMsgField(fieldSplit[i], "#173177");
@@ -37,7 +43,16 @@ public class WechatClient extends Client {
     tm.setTemplate_id(WX_TEMPLATE_ID);
     tm.setUrl("http://61.48.51.134/login");
     tm.setData(dataMap);
-    System.out.println(JSON.toJSONString(tm));
+
+    String postData = JSON.toJSONString(tm);
+    logger.info("send wechat template msg {}", postData);
+
+    AccessToken accessToken = WechatUtil.getAccessTokenFromFile();
+    try {
+      HttpUtil.doPost(sendUrl.replace("ACCESS_TOKEN", accessToken.getAccess_token()), postData);
+    } catch (IOException e) {
+      logger.error("post wechat template failed {}", e);
+    }
   }
 
   @Override
@@ -47,7 +62,7 @@ public class WechatClient extends Client {
       List<String> toUserList = queueMessage.getReceivers();
 
       for (String toUser: toUserList) {
-        sendWechat(toUser, queueMessage.getContent());
+        sendTemplate(toUser, queueMessage.getContent());
       }
       this.markDeliveryStatus(queueMessage.getLogId(), channel);
       return queueMessage.getReceivers().size();

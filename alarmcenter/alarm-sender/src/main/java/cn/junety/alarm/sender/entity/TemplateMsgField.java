@@ -1,4 +1,4 @@
-package cn.junety.alarm.sender.client.impl;
+package cn.junety.alarm.sender.entity;
 
 public class TemplateMsgField {
 
