@@ -1,0 +1,35 @@
+{
+  "data": {
+    "keyword5": {
+      "color": "#173177",
+        "value": "时间:2019-02-19 18:48:19"
+    },
+      "keyword3": {
+        "color": "#173177",
+        "value": "内容:weblogic崩了"
+      },
+      "keyword4": {
+        "color": "#173177",
+        "value": "级别:DEBUG"
+      },
+      "keyword1": {
+        "color": "#173177",
+        "value": "项目-模块:告警系统-告警服务端"
+      },
+      "keyword2": {
+        "color": "#173177",
+        "value": "IP:127.0.0.1"
+      },
+      "remark": {
+        "color": "#173177",
+        "value": "上报编号:9"
+      },
+      "first": {
+        "color": "#173177",
+        "value": "告警:告警服务端异常"
+      }
+  },
+    "template_id": "LsEJZoMCrli5-YV7JN4cmQbNRMtOFe4FYmkgNU9EIhI",
+    "touser": "otsOY1BEoGvB5wvHhrqPAoHfsTeM",
+    "url": "http://61.48.51.134/login"
+}
