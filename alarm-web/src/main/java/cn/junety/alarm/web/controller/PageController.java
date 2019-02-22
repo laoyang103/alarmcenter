@@ -25,6 +25,14 @@ public class PageController extends BaseController {
         return new ModelAndView("login");
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView toRegisterPage(HttpServletRequest request, Model model) {
+        String wxopenid = request.getParameter("wxopenid");
+        model.addAttribute("wxopenid", wxopenid);
+        logger.info("register wxopenid: " + wxopenid);
+        return new ModelAndView("register");
+    }
+
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView getAlarms(HttpServletRequest request, Model model) {
         User currentUser = getUser(request);

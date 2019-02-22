@@ -18,6 +18,7 @@ $(function() {
 
         login(login_data);
     });
+    $('#register').click(register) 
 });
 
 function login(login_data) {
@@ -35,4 +36,9 @@ function login(login_data) {
             window.location = "/home";
         }
     });
+}
+
+function register() {
+  var wxopenid = $('#wxopenid').val();
+  location = "/register?wxopenid=" + wxopenid;
 }

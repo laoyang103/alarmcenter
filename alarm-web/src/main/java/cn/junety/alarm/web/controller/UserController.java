@@ -51,7 +51,7 @@ public class UserController extends BaseController {
         return ResponseHelper.buildResponse(2000, "user", user);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String createUser(HttpServletRequest request, @RequestBody User user) {
         User currentUser = getUser(request);
         logger.info("POST /users, current_user:{}, user:{}", currentUser, user);
