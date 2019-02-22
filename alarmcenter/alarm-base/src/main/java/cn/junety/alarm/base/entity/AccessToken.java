@@ -1,4 +1,4 @@
-package cn.junety.alarm.sender.entity;
+package cn.junety.alarm.base.entity;
 
 public class AccessToken {
   // 获取到的凭证
