@@ -18,8 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 public class PageController extends BaseController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView toLoginPage() {
-        logger.info("GET /login");
+    public ModelAndView toLoginPage(HttpServletRequest request, Model model) {
+        String wxopenid = request.getParameter("wxopenid");
+        model.addAttribute("wxopenid", wxopenid);
+        logger.info("login wxopenid: " + wxopenid);
         return new ModelAndView("login");
     }
 

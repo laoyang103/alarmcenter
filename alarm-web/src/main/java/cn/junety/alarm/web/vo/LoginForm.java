@@ -6,6 +6,7 @@ package cn.junety.alarm.web.vo;
 public class LoginForm {
     protected String username;
     protected String password;
+    protected String wxopenid;
 
     public String getUsername() {
         return username;
@@ -23,11 +24,20 @@ public class LoginForm {
         this.password = password;
     }
 
+    public String getWxopenid() {
+        return wxopenid;
+    }
+
+    public void setWxopenid(String wxopenid) {
+        this.wxopenid = wxopenid;
+    }
+
     @Override
     public String toString() {
         return "{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", wxopenid='" + wxopenid + '\'' +
                 '}';
     }
 }

@@ -16,26 +16,31 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class LoginController extends BaseController {
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(HttpServletRequest request, @RequestBody LoginForm loginForm) {
-        logger.info("POST /login, loginForm:{}", JSON.toJSONString(loginForm));
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
+  public String login(HttpServletRequest request, @RequestBody LoginForm loginForm) {
+    logger.info("POST /login, loginForm:{}", JSON.toJSONString(loginForm));
 
-        User user = userService.getUserByAccount(loginForm.getUsername());
+    String wxopenid = loginForm.getWxopenid();
+    User user = userService.getUserByAccount(loginForm.getUsername());
 
-        // 管理员或普通用户才能登陆
-        if (user != null && (UserTypeEnum.ADMIN_USER.value().equals(user.getType())
-                || UserTypeEnum.NORMAL_USER.value().equals(user.getType()))) {
-            // TODO 接入到运维系统，进行密码校验
-            userLoginStatusService.addLoginStatus(request, user.getIdentification());
-            return ResponseHelper.buildResponse(2000, "status", "success");
-        }
-        return ResponseHelper.buildResponse(4004, "reason", "invalid username or password");
+    // 管理员或普通用户才能登陆
+    if (user != null && (UserTypeEnum.ADMIN_USER.value().equals(user.getType())
+          || UserTypeEnum.NORMAL_USER.value().equals(user.getType()))) {
+      // TODO 接入到运维系统，进行密码校验
+      if (null != wxopenid && !"".equals(wxopenid)) {
+        user.setWechat(wxopenid);
+        userService.updateUser(user);
+      }
+      userLoginStatusService.addLoginStatus(request, user.getIdentification());
+      return ResponseHelper.buildResponse(2000, "status", "success");
     }
+    return ResponseHelper.buildResponse(4004, "reason", "invalid username or password");
+  }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public String logout(HttpServletRequest request) {
-        logger.info("POST /logout");
-        userLoginStatusService.removeLoginStatus(request);
-        return ResponseHelper.buildResponse(2000);
-    }
+  @RequestMapping(value = "/logout", method = RequestMethod.POST)
+  public String logout(HttpServletRequest request) {
+    logger.info("POST /logout");
+    userLoginStatusService.removeLoginStatus(request);
+    return ResponseHelper.buildResponse(2000);
+  }
 }
