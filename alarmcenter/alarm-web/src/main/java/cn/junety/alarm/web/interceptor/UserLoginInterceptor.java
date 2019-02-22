@@ -30,7 +30,7 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
     String url = request.getRequestURL().toString();
-    if (url.contains("wxsvc") || url.contains("wxbind")) {
+    if (url.contains("wxsvc") || url.contains("register")) {
       return true;
     }
 

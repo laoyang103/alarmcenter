@@ -154,7 +154,7 @@ function getUserById(uid) {
 
 function createUser(user_data) {
     $.ajax({
-        url: "/users",
+        url: "/register",
         type: "POST",
         data: JSON.stringify(user_data),
         dataType: "json",
@@ -163,7 +163,7 @@ function createUser(user_data) {
             if (data["code"] != 2000) {
                 alert("新建用户账号失败，原因:"+data["reason"]);
             }
-            location.replace(location.href);
+            window.location = "/user";
         }
     });
 }
