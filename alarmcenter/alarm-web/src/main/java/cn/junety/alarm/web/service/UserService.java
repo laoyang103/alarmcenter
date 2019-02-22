@@ -53,6 +53,20 @@ public class UserService {
     }
 
     /**
+     * 根据用户标识获取用户信息
+     * @param wechat 用户标识
+     * @return 用户信息
+     */
+    public User getUserByWechat(String wechat) {
+        try {
+            return userDao.getUserByWechat(wechat);
+        } catch (Exception e) {
+            logger.error("get by wechat error, wechat:{}, caused by", wechat, e);
+            return null;
+        }
+    }
+
+    /**
      * 获取用户列表
      * @param userSearch 查询参数
      * @return 用户列表

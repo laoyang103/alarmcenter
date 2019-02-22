@@ -3,6 +3,7 @@ $(function() {
     $("#login").click(function () {
         var username = $("#username").val();
         var password = $("#password").val();
+        var wxopenid = $("#wxopenid").val();
 
         if(username.trim().length == 0 || password.trim().length == 0) {
             alert("用户名或密码不能为空");
@@ -11,7 +12,8 @@ $(function() {
 
         var login_data = {
             username: username,
-            password: password
+            password: password,
+            wxopenid: wxopenid
         };
 
         login(login_data);

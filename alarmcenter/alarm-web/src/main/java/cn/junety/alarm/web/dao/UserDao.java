@@ -18,6 +18,9 @@ public interface UserDao {
     @Select("select * from tb_user where identification=#{identification}")
     User getUserByIdentification(@Param("identification") String identification);
 
+    @Select("select * from tb_user where wechat=#{wechat}")
+    User getUserByWechat(@Param("wechat") String wechat);
+
     @Select("select * from tb_user where id=#{id}")
     User getUserById(@Param("id") int id);
 
