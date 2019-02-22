@@ -1,0 +1,21 @@
+{
+  "button": [{
+    "name": "个人中心",
+      "sub_button": [{
+        "type": "view",
+        "name": "个人中心",
+        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/user&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
+      }]
+  }, {
+    "name": "协软科技",
+      "sub_button": [{
+        "type": "click",
+        "name": "公司简介",
+        "key": "GET_COMPANY_INFO"
+      }, {
+        "type": "view",
+        "name": "公司官网",
+        "url": "http://www.protocolsoft.com"
+      }]
+  }]
+}
