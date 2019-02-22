@@ -1,4 +1,4 @@
-package cn.junety.alarm.sender.util;
+package cn.junety.alarm.base.util;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;

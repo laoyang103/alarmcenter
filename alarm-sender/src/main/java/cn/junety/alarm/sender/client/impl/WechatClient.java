@@ -7,21 +7,18 @@ import java.io.IOException;
 
 import cn.junety.alarm.base.common.ConfigKey;
 import cn.junety.alarm.base.entity.QueueMessage;
+import cn.junety.alarm.base.entity.AccessToken;
+import cn.junety.alarm.base.util.HttpUtil;
+import cn.junety.alarm.base.util.WechatUtil;
 import cn.junety.alarm.sender.client.Client;
-import cn.junety.alarm.sender.entity.AccessToken;
 import cn.junety.alarm.sender.entity.TemplateMsg;
 import cn.junety.alarm.sender.entity.TemplateMsgField;
-import cn.junety.alarm.sender.util.HttpUtil;
-import cn.junety.alarm.sender.util.WechatUtil;
 import com.alibaba.fastjson.JSON;
 
 /**
  * Created by caijt on 2017/3/29.
  */
 public class WechatClient extends Client {
-
-  private String   WX_TEMPLATE_ID = "LsEJZoMCrli5-YV7JN4cmQbNRMtOFe4FYmkgNU9EIhI";
-  private String[] WX_TEMPLATE_KEY = new String[]{"first", "remark", "keyword1", "keyword4", "keyword2", "keyword5", "keyword3"};
 
   public WechatClient(String name, String queueName) {
     super(name, queueName, "wechat");
@@ -34,13 +31,13 @@ public class WechatClient extends Client {
 
     TemplateMsg tm = new TemplateMsg();
     String[] fieldSplit = content.split("\n");
-    for (i = 0; i < WX_TEMPLATE_KEY.length; i++) {
+    for (i = 0; i < WechatUtil.WX_TEMPLATE_KEY.length; i++) {
       TemplateMsgField tmf = new TemplateMsgField(fieldSplit[i], "#173177");
-      dataMap.put(WX_TEMPLATE_KEY[i], tmf);
+      dataMap.put(WechatUtil.WX_TEMPLATE_KEY[i], tmf);
     }
 
     tm.setTouser(toUser);
-    tm.setTemplate_id(WX_TEMPLATE_ID);
+    tm.setTemplate_id(WechatUtil.WX_TEMPLATE_ID);
     tm.setUrl("http://61.48.51.134/login");
     tm.setData(dataMap);
 
