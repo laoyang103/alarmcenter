@@ -34,8 +34,9 @@ public class ModuleService {
      * 创建项目模块
      * @param module 模块信息
      */
-    public void createModule(Module module) {
+    public int createModule(Module module) {
         moduleDao.save(module);
+        return module.getId();
     }
 
     public Module getModuleByName(Module module) {

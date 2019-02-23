@@ -6,6 +6,7 @@ package cn.junety.alarm.base.entity;
 public class User {
     private Integer id;
     private String account;
+    private String password;
     private String name;
     private String identification;
     private Integer type;
@@ -28,6 +29,14 @@ public class User {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {

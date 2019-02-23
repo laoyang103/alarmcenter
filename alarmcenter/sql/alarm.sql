@@ -2,6 +2,7 @@
 CREATE TABLE `tb_user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `account` varchar(64) NOT NULL COMMENT '用户名',
+  `password` varchar(64) NOT NULL COMMENT '密码',
   `name` varchar(16) NOT NULL COMMENT '姓名',
   `identification` varchar(40) NOT NULL COMMENT '唯一标识',
   `type` tinyint NOT NULL DEFAULT '1' COMMENT '0管理员，1普通用户，2其他用户，-1无效',
@@ -80,8 +81,8 @@ CREATE TABLE `tb_alarm_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '告警日志表';
 
 -- TODO 更改成管理员的信息
-insert into tb_user(id, account, name, identification, type, mail, phone, wechat, qq)
-values(1, 'admin', 'admin', '9ad46aaf-d7d2-4095-a2a0-c27ee796d8e1', 0,
+insert into tb_user(id, account, password, name, identification, type, mail, phone, wechat, qq)
+values(1, 'admin', '123456', '管理员', '9ad46aaf-d7d2-4095-a2a0-c27ee796d8e1', 0,
           '553069938@qq.com', '13141402442', 'laoyang103', '553069938');
 
 -- TODO 更改成管理员的信息
@@ -97,6 +98,6 @@ insert into tb_group_member(group_id, user_id) VALUES(1, 1);
 
 insert into tb_alarm(id, code, name, project_id, module_id, group_id, route_key, config) values
   (1, 1, '告警服务端异常', 1, 1, 1, 'alarm.server.*', '{"freq_limit":true,"mail":true,"wechat":false,"sms":false,"qq":false,"debug_interval":5,"debug_times":10,"info_interval":3,"info_times":10,"error_interval":1,"error_times":10}'),
-  (2, 1, '告警发送异常', 1, 1, 1, 'alarm.sender.*', '{"freq_limit":true,"mail":true,"wechat":false,"sms":false,"qq":false,"debug_interval":5,"debug_times":10,"info_interval":3,"info_times":10,"error_interval":1,"error_times":10}'),
-  (3, 1, '告警web端异常', 1, 1, 1, 'alarm.web.*', '{"freq_limit":true,"mail":true,"wechat":false,"sms":false,"qq":false,"debug_interval":5,"debug_times":10,"info_interval":3,"info_times":10,"error_interval":1,"error_times":10}');
+  (2, 2, '告警发送异常', 1, 1, 1, 'alarm.sender.*', '{"freq_limit":true,"mail":true,"wechat":false,"sms":false,"qq":false,"debug_interval":5,"debug_times":10,"info_interval":3,"info_times":10,"error_interval":1,"error_times":10}'),
+  (3, 3, '告警web端异常', 1, 1, 1, 'alarm.web.*', '{"freq_limit":true,"mail":true,"wechat":false,"sms":false,"qq":false,"debug_interval":5,"debug_times":10,"info_interval":3,"info_times":10,"error_interval":1,"error_times":10}');
 

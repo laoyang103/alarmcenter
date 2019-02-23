@@ -26,11 +26,6 @@ $(function() {
 
     // create alarm
     $("#alarm-create").click(function() {
-        var code = $("#alarm-code").val();
-        if (code == null || !regex.test(code)) {
-            alert("告警代号不合法");
-            return;
-        }
         var name = $("#alarm-name").val();
         if (name == null || name.trim().length == 0) {
             alert("请输入告警名称");
@@ -64,7 +59,6 @@ $(function() {
         config["error_times"] = parseInt($("#error-times").val());
 
         var alarm_data = {
-            code: code,
             name: name,
             projectId: project_id,
             moduleId: module_id,
@@ -85,11 +79,6 @@ $(function() {
         var alarm_id = $("#current-id").attr("_aid");
         if (alarm_id == undefined) {
             console.log("update alarm fail, alarm_id=" + alarm_id);
-            return;
-        }
-        var code = $("#alarm-code-update").val();
-        if (code == null || !regex.test(code)) {
-            alert("告警代号不合法");
             return;
         }
         var name = $("#alarm-name-update").val();
@@ -126,7 +115,6 @@ $(function() {
 
         var alarm_data = {
             id: alarm_id,
-            code: code,
             name: name,
             projectId: project_id,
             moduleId: module_id,

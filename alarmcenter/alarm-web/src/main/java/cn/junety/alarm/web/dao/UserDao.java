@@ -24,8 +24,9 @@ public interface UserDao {
     @Select("select * from tb_user where id=#{id}")
     User getUserById(@Param("id") int id);
 
-    @Insert("insert into tb_user(account, name, identification, type, mail, phone, wechat, qq) " +
-            "values(#{account}, #{name}, #{identification}, #{type}, #{mail}, #{phone}, #{wechat}, #{qq})")
+    @Insert("insert into tb_user(account, password, name, identification, type, mail, phone, wechat, qq) " +
+            "values(#{account}, #{password}, #{name}, #{identification}, #{type}, #{mail}, #{phone}, #{wechat}, #{qq})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     int save(User user);
 
     @Update("update tb_user set name=#{name}, phone=#{phone}, mail=#{mail}, wechat=#{wechat}, qq=#{qq} " +

@@ -17,6 +17,7 @@ public interface AlarmDao {
 
     @Insert("insert into tb_alarm(code, name, project_id, module_id, group_id, route_key, config) " +
             "values(#{code}, #{name}, #{projectId}, #{moduleId}, #{groupId}, #{routeKey}, #{config})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int save(Alarm alarm);
 
     @Update("update tb_alarm " +

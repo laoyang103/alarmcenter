@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Options;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public interface ModuleDao {
     List<Module> getModuleByPprojectId(@Param("pid") int pid);
 
     @Insert("insert into tb_module(project_id, name) values(#{projectId}, #{name})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     int save(Module module);
 
     @Delete("delete from tb_module where id=#{id}")

@@ -23,10 +23,14 @@ public class LoginController extends BaseController {
     String wxopenid = loginForm.getWxopenid();
     User user = userService.getUserByAccount(loginForm.getUsername());
 
+    // 进行密码校验
+    if (!loginForm.getPassword().equals(user.getPassword())) {
+      user = null;
+    }
+
     // 管理员或普通用户才能登陆
     if (user != null && (UserTypeEnum.ADMIN_USER.value().equals(user.getType())
           || UserTypeEnum.NORMAL_USER.value().equals(user.getType()))) {
-      // TODO 接入到运维系统，进行密码校验
       if (null != wxopenid && !"".equals(wxopenid)) {
         user.setWechat(wxopenid);
         userService.updateUser(user);
