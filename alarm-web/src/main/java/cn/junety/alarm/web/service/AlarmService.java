@@ -152,6 +152,8 @@ public class AlarmService {
      */
     public void createAlarm(Alarm alarm) {
         alarmDao.save(alarm);
+        alarm.setCode(alarm.getId());
+        alarmDao.updateById(alarm);
     }
 
     /**
@@ -167,6 +169,7 @@ public class AlarmService {
      * @param alarm 告警信息
      */
     public void updateAlarm(Alarm alarm) {
+        alarm.setCode(alarm.getId());
         alarmDao.updateById(alarm);
     }
 }

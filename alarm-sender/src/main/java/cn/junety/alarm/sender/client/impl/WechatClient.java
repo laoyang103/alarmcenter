@@ -38,7 +38,7 @@ public class WechatClient extends Client {
 
     tm.setTouser(toUser);
     tm.setTemplate_id(WechatUtil.WX_TEMPLATE_ID);
-    tm.setUrl("http://laoyang.ngrok.xiaomiqiu.cn/log");
+    tm.setUrl("http://laoyang.ngrok.xiaomiqiu.cn/log?wxopenid=" + toUser);
     tm.setData(dataMap);
 
     String postData = JSON.toJSONString(tm);

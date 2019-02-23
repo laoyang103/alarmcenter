@@ -16,6 +16,11 @@ $(function() {
             alert("请输入用户账号");
             return;
         }
+        var password = $("#password").val();
+        if (password.trim().length == 0) {
+            alert("请输入用户密码");
+            return;
+        }
         var user_name = $("#user-name").val();
         if (user_name.trim().length == 0) {
             alert("请输入用户名称");
@@ -23,6 +28,7 @@ $(function() {
         }
         var user_data = {
             account: user_account,
+            password: password,
             name: user_name,
             mail: $("#user-mail").val(),
             phone: $("#user-phone").val(),

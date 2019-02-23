@@ -34,16 +34,16 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
       return true;
     }
 
-    String openid = null;
     String identification = userLoginStatusService.getIdentificationFromLoginStatus(request);
     User user = userService.getUserByIdentification(identification);
 
     String code = request.getParameter("code");
-    System.out.println("code: " + code);
-    if (null == user && null != code && !"".equals(code)) {
-      openid = WechatUtil.getWxopenidByCode(code);
-      System.out.println("openid: " + openid);
-      user = userService.getUserByWechat(openid);
+    String wxopenid = request.getParameter("wxopenid");
+    if (null == user && (null != code || null != wxopenid)) {
+      if (null != code && null == wxopenid) {
+        wxopenid = WechatUtil.getWxopenidByCode(code);
+      }
+      user = userService.getUserByWechat(wxopenid);
       System.out.println("user: " + user);
       if (null != user) {
         userLoginStatusService.addLoginStatus(request, user.getIdentification());
@@ -52,8 +52,8 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
 
     if (user == null) {
       logger.debug("login status check fail, identification:{}", identification);
-      if (null != openid) {
-        response.sendRedirect("/login?wxopenid=" + openid);
+      if (null != wxopenid) {
+        response.sendRedirect("/login?wxopenid=" + wxopenid);
       } else {
         response.sendRedirect("/login");
       }
