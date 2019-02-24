@@ -3,15 +3,34 @@
     "name": "个人中心",
       "sub_button": [{
         "type": "view",
-        "name": "个人中心",
+        "name": "个人信息",
         "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/user&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
+      }, {
+        "type": "view",
+        "name": "我的告警",
+        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/log&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
+      }]
+  }, {
+    "name": "告警中心",
+      "sub_button": [{
+        "type": "view",
+        "name": "项目",
+        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/project&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
+      }, {
+        "type": "view",
+        "name": "接收组",
+        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/group&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
+      }, {
+        "type": "view",
+        "name": "发送规则",
+        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/alarm&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
       }]
   }, {
     "name": "协软科技",
       "sub_button": [{
-        "type": "click",
+        "type": "view",
         "name": "公司简介",
-        "key": "GET_COMPANY_INFO"
+        "url": "http://www.protocolsoft.com/gsjs"
       }, {
         "type": "view",
         "name": "公司官网",

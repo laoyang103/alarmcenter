@@ -100,4 +100,14 @@ public class AlarmController extends BaseController {
 
         return ResponseHelper.buildResponse(2000);
     }
+
+    @RequestMapping(value = "/testAlarm/{aid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String testAlarm(HttpServletRequest request, @PathVariable Integer aid) {
+        User currentUser = getUser(request);
+        logger.info("test /testAlarm/{}, current_user:{}", aid, currentUser);
+
+        alarmService.testAlarmById(aid);
+
+        return ResponseHelper.buildResponse(2000);
+    }
 }
