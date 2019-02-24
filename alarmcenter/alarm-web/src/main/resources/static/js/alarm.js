@@ -74,6 +74,11 @@ $(function() {
         deleteAlarm(alarm_id);
     });
 
+    $("#alarm-test").click(function() {
+        var alarm_id = $("#current-id").attr("_aid");
+        testAlarm(alarm_id);
+    });
+
     // alarm update
     $("#alarm-update").click(function () {
         var alarm_id = $("#current-id").attr("_aid");
@@ -164,9 +169,14 @@ function getAlarmList(search) {
                     + "<td><button class='btn btn-info alarm-update' _aid='"+alarm["alarm"]["id"]+"' "
                     + "data-toggle='modal' data-target='#modal-alarm-update' "
                     + "style='padding:0;margin:0;width:40px;height:26px;'>编辑</button>"
+
                     + "&nbsp;&nbsp; <button class='btn btn-danger alarm-del' _aid='"+alarm["alarm"]["id"]+"' "
                     + "data-toggle='modal' data-target='#modal-alarm-del' "
-                    + "style='padding:0;margin:0;width:40px;height:26px;'>删除</button></td></tr>"
+                    + "style='padding:0;margin:0;width:40px;height:26px;'>删除</button>"
+
+                    + "&nbsp;&nbsp; <button class='btn btn-danger alarm-test' _aid='"+alarm["alarm"]["id"]+"' "
+                    + "data-toggle='modal' data-target='#modal-alarm-test' "
+                    + "style='padding:0;margin:0;width:40px;height:26px;'>测试</button></td></tr>"
             }
             $(".alarm-list").html(html);
             setAlarmClickEvent();
@@ -187,6 +197,12 @@ function setAlarmClickEvent() {
 
     $(".alarm-del").click(function() {
         $("#current-id").attr("_aid", $(this).attr("_aid"));
+    });
+
+    $(".alarm-test").click(function() {
+        $("#current-id").attr("_aid", $(this).attr("_aid"));
+        var alarm_id = $("#current-id").attr("_aid");
+        testAlarm(alarm_id);
     });
 }
 
@@ -219,6 +235,23 @@ function deleteAlarm(aid) {
                 return;
             }
             getAlarmList(search_select + "=" + search_input);
+        }
+    });
+}
+
+function testAlarm(aid) {
+    $.ajax({
+        url: "/testAlarm/"+aid,
+        type: "GET",
+        data: null,
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        success: function(data){
+            if(data["code"] != 2000) {
+                alert("测试告警失败");
+                return;
+            }
+            alert("测试告警已发送");
         }
     });
 }

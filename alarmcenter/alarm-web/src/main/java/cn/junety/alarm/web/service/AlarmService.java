@@ -1,5 +1,6 @@
 package cn.junety.alarm.web.service;
 
+import cn.junety.alarm.api.AlarmClient;
 import cn.junety.alarm.base.entity.*;
 import cn.junety.alarm.web.dao.AlarmDao;
 import cn.junety.alarm.web.dao.GroupDao;
@@ -171,5 +172,14 @@ public class AlarmService {
     public void updateAlarm(Alarm alarm) {
         alarm.setCode(alarm.getId());
         alarmDao.updateById(alarm);
+    }
+
+    /**
+     * 根据id测试告警
+     * @param aid 告警id
+     */
+    public void testAlarmById(Integer aid) {
+        Alarm alarm = alarmDao.getAlarmById(aid);
+        AlarmClient.debug(alarm.getCode(), alarm.getRouteKey(), alarm.getName() + "的告警测试");
     }
 }
