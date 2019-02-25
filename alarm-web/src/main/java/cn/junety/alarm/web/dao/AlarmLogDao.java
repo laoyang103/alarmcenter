@@ -28,6 +28,13 @@ public interface AlarmLogDao {
             "limit #{page.start}, #{page.pageSize}")
     List<AlarmLog> getLogByCode(AlarmLogSearch alarmLogSearch);
 
+    @Select("select id, report_id, code, alarm_name, project_name, module_name, group_name, level, receivers, " +
+            "content, ip, status, delivery_status, create_time " +
+            "from tb_alarm_log " +
+            "where receivers=(select name from tb_user where id=#{userId}) order by id desc " +
+            "limit #{page.start}, #{page.pageSize}")
+    List<AlarmLog> getLogByUserId(AlarmLogSearch alarmLogSearch);
+
     @Select("select count(id) from tb_alarm_log where code=#{code}")
     int getLogCountByCode(AlarmLogSearch alarmLogSearch);
 

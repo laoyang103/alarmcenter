@@ -3,7 +3,7 @@
     "name": "个人中心",
       "sub_button": [{
         "type": "view",
-        "name": "个人信息",
+        "name": "我的信息",
         "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/user&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
       }, {
         "type": "view",

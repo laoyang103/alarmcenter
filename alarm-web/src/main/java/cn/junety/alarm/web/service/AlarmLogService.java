@@ -17,31 +17,33 @@ import java.util.List;
 @Service
 public class AlarmLogService {
 
-    private static final Logger logger = LoggerFactory.getLogger(AlarmLogService.class);
+  private static final Logger logger = LoggerFactory.getLogger(AlarmLogService.class);
 
-    @Autowired
-    private AlarmLogDao alarmLogDao;
+  @Autowired
+  private AlarmLogDao alarmLogDao;
 
-    public List<AlarmLog> getLogList(AlarmLogSearch alarmLogSearch) {
-        if(alarmLogSearch.getCode() != null) {
-            return alarmLogDao.getLogByCode(alarmLogSearch);
-        } else if(alarmLogSearch.getAlarmName() != null) {
-            return alarmLogDao.getLogByAlarmName(alarmLogSearch);
-        } else if(alarmLogSearch.getProjectName() != null) {
-            return alarmLogDao.getLogByProjectName(alarmLogSearch);
-        } else {
-            return alarmLogDao.getLog(alarmLogSearch);
-        }
+  public List<AlarmLog> getLogList(AlarmLogSearch alarmLogSearch) {
+    if(alarmLogSearch.getCode() != null) {
+      return alarmLogDao.getLogByCode(alarmLogSearch);
+    } else if(alarmLogSearch.getAlarmName() != null) {
+      return alarmLogDao.getLogByAlarmName(alarmLogSearch);
+    } else if(alarmLogSearch.getProjectName() != null) {
+      return alarmLogDao.getLogByProjectName(alarmLogSearch);
+    } else if (alarmLogSearch.getUserId() > 1) {
+      return alarmLogDao.getLogByUserId(alarmLogSearch);
+    } else {
+      return alarmLogDao.getLog(alarmLogSearch);
     }
+  }
 
-    public int getLogCount(AlarmLogSearch alarmLogSearch) {
-        if(alarmLogSearch.getCode() != null) {
-            return alarmLogDao.getLogCountByCode(alarmLogSearch);
-        } else if(alarmLogSearch.getAlarmName() != null) {
-            return alarmLogDao.getLogCountByAlarmName(alarmLogSearch);
-        } else if(alarmLogSearch.getProjectName() != null) {
-            return alarmLogDao.getLogCountByProjectName(alarmLogSearch);
-        }
-        return alarmLogDao.getLogCount();
+  public int getLogCount(AlarmLogSearch alarmLogSearch) {
+    if(alarmLogSearch.getCode() != null) {
+      return alarmLogDao.getLogCountByCode(alarmLogSearch);
+    } else if(alarmLogSearch.getAlarmName() != null) {
+      return alarmLogDao.getLogCountByAlarmName(alarmLogSearch);
+    } else if(alarmLogSearch.getProjectName() != null) {
+      return alarmLogDao.getLogCountByProjectName(alarmLogSearch);
     }
+    return alarmLogDao.getLogCount();
+  }
 }
