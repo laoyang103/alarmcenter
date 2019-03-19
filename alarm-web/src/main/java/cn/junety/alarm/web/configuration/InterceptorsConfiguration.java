@@ -12,16 +12,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class InterceptorsConfiguration extends WebMvcConfigurerAdapter {
 
-    @Bean
-    UserLoginInterceptor userLoginInterceptor() {
-        return new UserLoginInterceptor();
-    }
+  @Bean
+  UserLoginInterceptor userLoginInterceptor() {
+    return new UserLoginInterceptor();
+  }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(userLoginInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/login")
-                .excludePathPatterns("/monitor/**");
-        super.addInterceptors(registry);
-    }
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(userLoginInterceptor()).addPathPatterns("/**")
+      .excludePathPatterns("/wxsvc")
+      .excludePathPatterns("/*login")
+      .excludePathPatterns("/*register")
+      .excludePathPatterns("/monitor/**");
+    super.addInterceptors(registry);
+  }
 }

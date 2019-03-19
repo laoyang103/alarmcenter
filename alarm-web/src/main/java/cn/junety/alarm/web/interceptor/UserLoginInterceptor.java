@@ -29,11 +29,6 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-    String url = request.getRequestURL().toString();
-    if (url.contains("wxsvc") || url.contains("register")) {
-      return true;
-    }
-
     String identification = userLoginStatusService.getIdentificationFromLoginStatus(request);
     User user = userService.getUserByIdentification(identification);
 
@@ -53,7 +48,7 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
     if (user == null) {
       logger.debug("login status check fail, identification:{}", identification);
       if (null != wxopenid) {
-        response.sendRedirect("/login?wxopenid=" + wxopenid);
+        response.sendRedirect("/wxlogin?wxopenid=" + wxopenid);
       } else {
         response.sendRedirect("/login");
       }

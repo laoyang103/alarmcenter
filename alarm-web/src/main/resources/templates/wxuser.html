@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>用户</title>
+
+  <link rel="stylesheet" th:href="@{/css/weui.min.css}" />
+
+  <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+  <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+  <script th:src="@{/js/jweixin-1.0.0.js}" type="text/javascript"></script>
+  <script th:src="@{/js/vendor.bundle.js}" type="text/javascript"></script>
+  <script th:src="@{/js/bundle.js}" type="text/javascript"></script>
+  <script th:src="@{/js/wxuser.js}" type="text/javascript"></script>
+</head>
+
+<body ontouchstart="">
+<div id="container"><div class="profile"><div class="weui_cells weui_cells_access">
+
+  <div class="weui_cell" id="avatarCell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>用户名</p>
+    </div>
+    <div class="weui_cell_ft">
+      <span th:text="${current_user.account}">none</span>
+    </div>
+  </div>
+
+  <div class="weui_cell" id="avatarCell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>姓名</p>
+    </div>
+    <div class="weui_cell_ft">
+      <span th:text="${current_user.name}">none</span>
+    </div>
+  </div>
+
+  <div class="weui_cell" id="avatarCell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>邮箱</p>
+    </div>
+    <div class="weui_cell_ft">
+      <span th:text="${current_user.mail}">none</span>
+    </div>
+  </div>
+
+  <div class="weui_cell" id="avatarCell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <p>手机</p>
+    </div>
+    <div class="weui_cell_ft">
+      <span th:text="${current_user.phone}">none</span>
+    </div>
+  </div>
+
+</div></div></div>
+</body>
+</html>
