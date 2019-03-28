@@ -18,6 +18,9 @@ public interface AlarmLogDao {
             "limit #{page.start}, #{page.pageSize}")
     List<AlarmLog> getLog(AlarmLogSearch alarmLogSearch);
 
+    @Select("select * from tb_alarm_log where id=#{logid}")
+    List<AlarmLog>  getLogById(AlarmLogSearch alarmLogSearch);
+
     @Select("select count(id) from tb_alarm_log")
     int getLogCount();
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class AlarmLogSearch {
     private Page page;
+    private Integer logid;
     private Integer userId;
     private Integer code;
     private String alarmName;
@@ -28,6 +29,8 @@ public class AlarmLogSearch {
             this.alarmName = request.getParameter("alarm_name");
         } else if(!Strings.isNullOrEmpty(request.getParameter("project"))) {
             this.projectName = request.getParameter("project");
+        } else if(!Strings.isNullOrEmpty(request.getParameter("logid"))) {
+            this.logid = Integer.parseInt(request.getParameter("logid"));
         }
     }
 
@@ -37,6 +40,14 @@ public class AlarmLogSearch {
 
     public void setPage(Page page) {
         this.page = page;
+    }
+
+    public Integer getLogid() {
+        return logid;
+    }
+
+    public void setLogid(Integer logid) {
+        this.logid = logid;
     }
 
     public Integer getUserId() {

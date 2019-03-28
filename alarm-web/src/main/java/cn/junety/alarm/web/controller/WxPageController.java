@@ -82,4 +82,16 @@ public class WxPageController extends BaseController {
 
         return new ModelAndView("wxlog");
     }
+
+    @RequestMapping(value = "/wxlogDetail", method = RequestMethod.GET)
+    public ModelAndView toLogDetailPage(HttpServletRequest request, Model model) {
+        User currentUser = getUser(request);
+        String logid = request.getParameter("logid");
+        logger.info("GET /wxlogDetail, current_user:{}", currentUser);
+
+        model.addAttribute("logid", logid);
+        model.addAttribute("current_user", currentUser);
+
+        return new ModelAndView("wxlogDetail");
+    }
 }

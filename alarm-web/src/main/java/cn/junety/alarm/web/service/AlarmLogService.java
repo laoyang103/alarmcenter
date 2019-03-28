@@ -31,6 +31,8 @@ public class AlarmLogService {
       return alarmLogDao.getLogByProjectName(alarmLogSearch);
     } else if (alarmLogSearch.getUserId() > 1) {
       return alarmLogDao.getLogByUserId(alarmLogSearch);
+    } else if (alarmLogSearch.getLogid() != null) {
+      return alarmLogDao.getLogById(alarmLogSearch);
     } else {
       return alarmLogDao.getLog(alarmLogSearch);
     }
@@ -46,4 +48,5 @@ public class AlarmLogService {
     }
     return alarmLogDao.getLogCount();
   }
+
 }

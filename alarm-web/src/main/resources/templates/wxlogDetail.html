@@ -11,24 +11,27 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/base.js"></script>
-<script src="/js/wxlog.js"></script>
+<script src="/js/wxlogDetail.js"></script>
 
 </head>
 
 
 <body ontouchstart="">
+
+<input id="logid" type="hidden" th:value="${logid}" />
+
 <div class="page-hd">
   <h1 class="page-hd-title">
-    我的告警
+    告警详情
   </h1>
   <p class="page-hd-desc"></p>
 </div>
 
 <div class="page-bd">
 
-  <div class="weui-cells__title">告警列表</div>
+  <div class="weui-cells__title">告警详情</div>
   <div class="weui-cells">
-    <span class="log-list" />
+    <span class="log-detail" />
   </div>
 </div>
 

@@ -29,12 +29,13 @@ function getLogList(search) {
                     else if(log["status"]== 3)status = "测试";
                     else status = "创建";
 
-                    html += "<div class=\"weui-cell\"><div class=\"weui-cell__bd\">" +
+                    html += "<a class=\"weui-cell weui-cell_access\" href=\"/wxlogDetail?logid=" + log["id"] + "\">"
+                        + "<div class=\"weui-cell\"><div class=\"weui-cell__bd\">" +
                         + "<p>" + formatDate(new Date(log["createTime"])) + "</p>"
                         + "</div>"
                         + "<div class=\"weui-cell__ft\">"
-                        + "<p class=\"weui_media_desc\">" + log["projectName"] + "-" + log["content"] + "</p>"
-                        + "</div></div>";
+                        + "<p class=\"weui_media_desc\">" + log["projectName"] + "</p>"
+                        + "</div></div></a>";
                     html = html.replace("NaN", "");
 
 
