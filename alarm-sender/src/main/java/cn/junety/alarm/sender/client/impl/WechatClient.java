@@ -26,6 +26,7 @@ public class WechatClient extends Client {
 
   private void sendTemplate(String toUser, String content) {
     int i;
+    String logid = "1";
     Map<String, Object> dataMap = new HashMap<String, Object>();
     String sendUrl = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
 
@@ -34,11 +35,16 @@ public class WechatClient extends Client {
     for (i = 0; i < WechatUtil.WX_TEMPLATE_KEY.length; i++) {
       TemplateMsgField tmf = new TemplateMsgField(fieldSplit[i], "#173177");
       dataMap.put(WechatUtil.WX_TEMPLATE_KEY[i], tmf);
+      if (WechatUtil.WX_TEMPLATE_KEY[i].equals("remark")) {
+        logid = tmf.getValue().split(":")[1];
+      }
     }
 
     tm.setTouser(toUser);
     tm.setTemplate_id(WechatUtil.WX_TEMPLATE_ID);
-    tm.setUrl("http://laoyang.ngrok.xiaomiqiu.cn/log?wxopenid=" + toUser);
+    tm.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + WechatUtil.WX_APP_ID 
+        + "&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/wxlogDetail?logid=" + logid
+        + "&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
     tm.setData(dataMap);
 
     String postData = JSON.toJSONString(tm);
