@@ -1,46 +1,27 @@
 $(function() {
-    getWxAlarmList()
+    getWxAlarmList();
 });
 
-function getWxAlarmList() {
+function getWxAlarmList(aid) {
   $.ajax({
     url: "/alarms",
     type: "GET",
     success: function(data) {
       var i, html = "";
-      var alarm = data["alarm_list"][0];
-      html += "<div class=\"weui-cells\">"
-      + "<div class=\"weui-cell\">" + "<div class=\"weui-cell__bd\">" + "<p>告警代号</p>"   + "</div>" + "<div class=\"weui-cell__ft\">" + alarm["alarm"]["code"]                       + "</div></div>"
-      + "<div class=\"weui-cell\">" + "<div class=\"weui-cell__bd\">" + "<p>告警名称</p>"   + "</div>" + "<div class=\"weui-cell__ft\">" + alarm["alarm"]["name"]                       + "</div></div>"  
-      + "<div class=\"weui-cell\">" + "<div class=\"weui-cell__bd\">" + "<p>告警项目</p>"   + "</div>" + "<div class=\"weui-cell__ft\">" + alarm["project"]["name"]                     + "</div></div>"  
-      + "<div class=\"weui-cell\">" + "<div class=\"weui-cell__bd\">" + "<p>告警模块</p>"   + "</div>" + "<div class=\"weui-cell__ft\">" + alarm["module"]["name"]                      + "</div></div>"  
-      + "<div class=\"weui-cell\">" + "<div class=\"weui-cell__bd\">" + "<p>接收组</p>"     + "</div>" + "<div class=\"weui-cell__ft\">" + alarm["group"]["name"]                       + "</div></div>" 
-      + "<div class=\"weui-cell\">" + "<div class=\"weui-cell__bd\">" + "<p>路由KEY</p>"    + "</div>" + "<div class=\"weui-cell__ft\">" + alarm["alarm"]["routeKey"]                   + "</div></div>" 
-      + "<div class=\"weui-cell\">" + "<div class=\"weui-cell__bd\">" + "<p>配置信息</p>"   + "</div>" + "<div class=\"weui-cell__ft\">" + alarm["config"]                              + "</div></div>" 
-      "</div>"
-
-      html += "<a href=\"javascript:void(0);\" onclick=\"testAlarm(" + alarm["alarm"]["code"]
-      + ")\" class=\"weui-btn weui-btn_primary\">测试告警机制</a>"
-
+      var alarm_list = data["alarm_list"];
+      for(i = 0; i < alarm_list.length; i++) {
+        var alarm  = alarm_list[i];
+        html += "<a class=\"weui-cell weui-cell_access\" href=\"/wxalarmDetail?aid=" + alarm["alarm"]["code"] + "\">"
+        + "<div class=\"weui-cell\"><div class=\"weui-cell__bd\">" +
+        + "<p>" + alarm["alarm"]["code"] + ": " + alarm["alarm"]["name"] + "</p>"
+        + "</div>"
+        + "<div class=\"weui-cell__ft\">"
+        + "<p class=\"weui_media_desc\">" + alarm["config"] + "</p>"
+        + "</div></div></a>";
+      }
       html = html.replace("NaN", "");
       $(".alarm-list").html(html);
     }
   });
 }
 
-function testAlarm(aid) {
-    $.ajax({
-        url: "/testAlarm/"+aid,
-        type: "GET",
-        data: null,
-        dataType: "json",
-        contentType: "application/json;charset=utf-8",
-        success: function(data){
-            if(data["code"] != 2000) {
-                alert("测试告警失败");
-                return;
-            }
-            alert("测试告警已发送");
-        }
-    });
-}

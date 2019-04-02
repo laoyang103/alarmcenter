@@ -143,6 +143,21 @@ public class AlarmService {
      * @param aid 告警id
      * @return 告警信息
      */
+    public AlarmVO getAlarmVOById(Integer aid) {
+        Alarm alarm = alarmDao.getAlarmById(aid);
+        AlarmVO alarmVO = new AlarmVO();
+        alarmVO.setAlarm(alarm);
+        alarmVO.setProject(projectDao.getProjectById(alarm.getProjectId()));
+        alarmVO.setModule(moduleDao.getModuleById(alarm.getModuleId()));
+        alarmVO.setGroup(groupDao.getGroupById(alarm.getGroupId()));
+        return alarmVO;
+    }
+
+    /**
+     * 根据id获取告警
+     * @param aid 告警id
+     * @return 告警信息
+     */
     public Alarm getAlarmById(Integer aid) {
         return alarmDao.getAlarmById(aid);
     }

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8"></meta>
-<title>告警机制列表</title>
+<title>告警机制详情</title>
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"></meta>
 <link rel="stylesheet" href="/css/weui.css"/>
 <link rel="stylesheet" href="/css/weuix.css"/>
@@ -11,24 +11,27 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/base.js"></script>
-<script src="/js/wxalarm.js"></script>
+<script src="/js/wxalarmDetail.js"></script>
 
 </head>
 
 
 <body ontouchstart="">
+
+<input id="aid" type="hidden" th:value="${aid}" />
+
 <div class="page-hd">
   <h1 class="page-hd-title">
-    告警机制列表
+    告警机制详情
   </h1>
   <p class="page-hd-desc"></p>
 </div>
 
 <div class="page-bd">
 
-  <div class="weui-cells__title">告警机制列表</div>
+  <div class="weui-cells__title">告警机制详情</div>
   <div class="weui-cells">
-    <span class="alarm-list" />
+    <span class="alarm-detail" />
   </div>
 </div>
 

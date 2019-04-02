@@ -73,6 +73,18 @@ public class WxPageController extends BaseController {
         return new ModelAndView("wxalarm");
     }
 
+    @RequestMapping(value = "/wxalarmDetail", method = RequestMethod.GET)
+    public ModelAndView toAlarmDetailPage(HttpServletRequest request, Model model) {
+        User currentUser = getUser(request);
+        String aid = request.getParameter("aid");
+        logger.info("GET /wxalarmDetail, current_user:{}", currentUser);
+
+        model.addAttribute("aid", aid);
+        model.addAttribute("current_user", currentUser);
+
+        return new ModelAndView("wxalarmDetail");
+    }
+
     @RequestMapping(value = "/wxlog", method = RequestMethod.GET)
     public ModelAndView toLogPage(HttpServletRequest request, Model model) {
         User currentUser = getUser(request);

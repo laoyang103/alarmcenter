@@ -63,6 +63,15 @@ public class AlarmController extends BaseController {
                 "module_list", moduleList, "group_list", groupList, "alarm", alarm);
     }
 
+    @RequestMapping(value = "/alarmDetail/{aid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getAlarmInfoById(HttpServletRequest request, @PathVariable Integer aid) {
+        User currentUser = getUser(request);
+        logger.info("GET /alarmDetail/{}, current_user:{}", aid, currentUser);
+
+        AlarmVO alarmvo = alarmService.getAlarmVOById(aid);
+        return ResponseHelper.buildResponse(2000, "alarm", alarmvo);
+    }
+
     @RequestMapping(value = "/alarms", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String createAlarm(HttpServletRequest request, @RequestBody Alarm alarm) {
         User currentUser = getUser(request);
