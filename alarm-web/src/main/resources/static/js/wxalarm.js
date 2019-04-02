@@ -18,8 +18,8 @@ function getWxAlarmList(aid) {
         + "<div class=\"weui-cell__ft\">"
         + "<p class=\"weui_media_desc\">" + alarm["config"] + "</p>"
         + "</div></div></a>";
+        html = html.replace("NaN", "");
       }
-      html = html.replace("NaN", "");
       $(".alarm-list").html(html);
     }
   });

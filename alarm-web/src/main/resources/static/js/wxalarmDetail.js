@@ -20,7 +20,7 @@ function getWxAlarmById(aid) {
       + "<div class=\"weui-cell\">" + "<div class=\"weui-cell__bd\">" + "<p>配置信息</p>"   + "</div>" + "<div class=\"weui-cell__ft\">" + alarm["config"]                      + "</div></div>" 
       "</div>"
 
-      html += "<a href=\"javascript:void(0);\" onclick=\"testAlarm(" + alarm["code"]
+      html += "<a href=\"javascript:void(0);\" onclick=\"testAlarm(" + alarm["alarm"]["code"]
       + ")\" class=\"weui-btn weui-btn_primary\">测试告警机制</a>"
 
       html = html.replace("NaN", "");
