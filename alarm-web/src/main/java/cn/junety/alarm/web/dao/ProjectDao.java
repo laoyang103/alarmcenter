@@ -15,12 +15,12 @@ public interface ProjectDao {
     @Select("select * from tb_project where id=#{id}")
     Project getProjectById(@Param("id") int id);
 
-    @Insert("insert into tb_project(name, creater, create_time, comment) " +
-            "values(#{name}, #{creater}, #{createTime}, #{comment})")
+    @Insert("insert into tb_project(name, creater, create_time, comment, ip, port) " +
+            "values(#{name}, #{creater}, #{createTime}, #{comment}, #{ip}, #{port})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void save(Project project);
 
-    @Update("update tb_project set name=#{name}, comment=#{comment} where id=#{id}")
+    @Update("update tb_project set name=#{name}, ip=#{ip}, comment=#{comment} where id=#{id}")
     void update(Project project);
 
     @Delete("delete from tb_project where id=#{id}")

@@ -9,8 +9,14 @@ $(function() {
             alert("请输入项目名称");
             return;
         }
+        var project_ip = $("#project-ip").val();
+        if (project_ip.trim().length == 0) {
+            alert("请输入远端IP");
+            return;
+        }
         var project_data = {
             name: project_name,
+            ip: projectIp2int(project_ip),
             comment: $("#project-comment").val()
         };
         $("#modal-project-create").modal('hide');
@@ -29,8 +35,14 @@ $(function() {
             alert("请输入项目名称");
             return;
         }
+        var project_ip = $("#project-ip-update").val();
+        if (project_ip.trim().length == 0) {
+            alert("请输入远端IP");
+            return;
+        }
         var project_data = {
             id: project_id,
+            ip: projectIp2int(project_ip),
             name: project_name,
             comment: $("#project-comment-update").val()
         };
@@ -53,6 +65,28 @@ $(function() {
 
 });
 
+
+function projectInt2iP(num) 
+{
+  var str;
+  var tt = new Array();
+  tt[0] = (num >>> 24) >>> 0;
+  tt[1] = ((num << 8) >>> 24) >>> 0;
+  tt[2] = (num << 16) >>> 24;
+  tt[3] = (num << 24) >>> 24;
+  str = String(tt[0]) + "." + String(tt[1]) + "." + String(tt[2]) + "." + String(tt[3]);
+  return str;
+}
+
+function projectIp2int(ip) 
+{
+  var num = 0;
+  ip = ip.split(".");
+  num = Number(ip[0]) * 256 * 256 * 256 + Number(ip[1]) * 256 * 256 + Number(ip[2]) * 256 + Number(ip[3]);
+  num = num >>> 0;
+  return num;
+}
+
 function getProjectList(search) {
     $.ajax({
         url: "/projects?page_no="+current_page+"&page_size="+page_length+"&"+search,
@@ -69,6 +103,8 @@ function getProjectList(search) {
                         + "<td>" + project["name"] + "</td>"
                         + "<td>" + project["creater"] + "</td>"
                         + "<td>" + formatDate(new Date(project["createTime"])) + "</td>"
+                        + "<td>" + projectInt2iP(project["ip"]) + "</td>"
+                        + "<td>" + project["port"] + "</td>"
                         + "<td>" + project["comment"] + "</td>";
 
                     if (permission_mapper[project["id"]] == 0 || data["user"]["type"] == 0) {
@@ -113,6 +149,7 @@ function getProjectById(pid) {
             if(data["code"] == 2000) {
                 var project = data["project"];
                 $("#project-name-update").val(project["name"]);
+                $("#project-ip-update").val(projectInt2iP(project["ip"]));
                 $("#project-comment-update").val(project["comment"]);
             }
         }

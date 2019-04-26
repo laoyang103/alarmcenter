@@ -134,9 +134,10 @@ public class UserService {
         // 默认项目
         Project project = new Project();
         project.setName(user.getAccount() + "的默认项目");
+        project.setIp(0);
+        project.setPort(5144);
         project.setComment(user.getAccount() + "的默认项目");
         int projectId = projectService.createProject(user, project);
-        System.out.println(projectId);
 
         // 项目和用户关联
         projectMemberService.addProjectMember(projectId, userId, 0);

@@ -5,6 +5,8 @@ package cn.junety.alarm.base.entity;
  */
 public class Project {
     private int id;
+    private int port;
+    private int ip;
     private String name;
     private String creater;
     private Long createTime;
@@ -16,6 +18,22 @@ public class Project {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public int getIp() {
+        return ip;
+    }
+
+    public void setIp(int ip) {
+        this.ip = ip;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
     }
 
     public String getName() {
