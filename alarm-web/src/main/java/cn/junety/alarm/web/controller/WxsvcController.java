@@ -47,18 +47,4 @@ public class WxsvcController extends BaseController {
     }
     return retMsg;
   }
-
-  @RequestMapping(value = "/wxbind", method = RequestMethod.POST)
-  public String wxbind(HttpServletRequest request, @RequestBody WxbindForm wxbindForm) {
-    logger.info("POST /wxbind, wxbindForm:{}", JSON.toJSONString(wxbindForm));
-
-    User user = userService.getUserByAccount(wxbindForm.getUsername());
-    if (user != null && (UserTypeEnum.ADMIN_USER.value().equals(user.getType())
-          || UserTypeEnum.NORMAL_USER.value().equals(user.getType()))) {
-      wxsvcService.bindWxOpenid(user, wxbindForm.getWxopenid());
-      userLoginStatusService.addLoginStatus(request, user.getIdentification());
-      return ResponseHelper.buildResponse(2000, "status", "success");
-    }
-    return ResponseHelper.buildResponse(4004, "reason", "invalid username or password");
-  }
 }

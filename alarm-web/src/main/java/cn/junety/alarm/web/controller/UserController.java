@@ -58,8 +58,8 @@ public class UserController extends BaseController {
 
         try {
             if (userService.getUserByAccount(user.getAccount()) == null) {
-                userService.createUser(user);
-                return ResponseHelper.buildResponse(2000);
+                int userid = userService.createUser(user);
+                return ResponseHelper.buildResponse(2000, "userid", userid);
             } else {
                 return ResponseHelper.buildResponse(4000, "reason", "用户已存在");
             }

@@ -34,12 +34,13 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
 
     String code = request.getParameter("code");
     String wxopenid = request.getParameter("wxopenid");
+    logger.info("get wechat by code: " + code);
     if (null == user && (null != code || null != wxopenid)) {
       if (null != code && null == wxopenid) {
         wxopenid = WechatUtil.getWxopenidByCode(code);
       }
       user = userService.getUserByWechat(wxopenid);
-      System.out.println("user: " + user);
+      logger.info("get user by wechat: " + user);
       if (null != user) {
         userLoginStatusService.addLoginStatus(request, user.getIdentification());
       }
@@ -48,7 +49,7 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
     if (user == null) {
       logger.debug("login status check fail, identification:{}", identification);
       if (null != wxopenid) {
-        response.sendRedirect("/wxlogin?wxopenid=" + wxopenid);
+        response.sendRedirect("/wxregister?" + "wxopenid=" + wxopenid);
       } else {
         response.sendRedirect("/login");
       }

@@ -50,6 +50,14 @@ CREATE TABLE `tb_group_member` (
   PRIMARY KEY (`group_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '接收组成员表';
 
+CREATE TABLE `tb_device` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userid` int NOT NULL COMMENT '用户id',
+  `cpus` varchar(2000) NOT NULL COMMENT 'cpuid字符串',
+  `macs` varchar(2000) NOT NULL COMMENT 'macid字符串',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '硬件设备表';
+
 CREATE TABLE `tb_alarm` (
   `id` int NOT NULL AUTO_INCREMENT,
   `code` int NOT NULL COMMENT '告警代号',

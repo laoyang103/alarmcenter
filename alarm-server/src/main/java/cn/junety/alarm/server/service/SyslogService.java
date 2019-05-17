@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+import cn.junety.alarm.api.impl.Level;
 import cn.junety.alarm.server.vo.AlarmForm;
 import cn.junety.alarm.server.vo.SyslogBean;
 import cn.junety.alarm.server.syslog.SyslogParser;
@@ -24,14 +25,20 @@ public class SyslogService {
   // private String ipaddr;
   // private int port;
   // private String facility;
+  // private String severity;
   // private int timestamp;
+  // private String hostname;
+  // private String Message;
 
-  // private Integer code;
-  // private String routeKey;
-  // private boolean isTest;
+  //   private Integer code;
+  //   private String routeKey;
+  //   private boolean isTest;
 
   private AlarmForm syslogToAlarmForm(SyslogBean sysbean) {
-    return null;
+    AlarmForm af = new AlarmForm();
+    af.setIp(sysbean.getIpaddr());
+    af.setContent(sysbean.getMessage());
+    return af;
   }
 
   public void addSyslogByString(String ipstr, int port, String sysstr) {

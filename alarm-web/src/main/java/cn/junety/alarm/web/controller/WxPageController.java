@@ -106,4 +106,27 @@ public class WxPageController extends BaseController {
 
         return new ModelAndView("wxlogDetail");
     }
+
+    @RequestMapping(value = "/wxqrcode", method = RequestMethod.GET)
+      public ModelAndView toQrcodePage(HttpServletRequest request, Model model) {
+        User currentUser = getUser(request);
+
+        String wxopenid = request.getParameter("wxopenid");
+        String phys = request.getParameter("phys");
+        String macs = phys.split("-")[0];
+        String cpus = phys.split("-")[1];
+        model.addAttribute("userid", currentUser.getId());
+        model.addAttribute("wxopenid", wxopenid);
+        model.addAttribute("macs", macs);
+        model.addAttribute("cpus", cpus);
+        model.addAttribute("account", currentUser.getAccount());
+
+        logger.info("wxbindPhy user: " + currentUser + "macs=" + macs + "cpus=" + cpus);
+
+        if (null == currentUser) {
+          return new ModelAndView("wxbindUserDevice");
+        } else {
+          return new ModelAndView("wxbindDevice");
+        }
+      }
 }

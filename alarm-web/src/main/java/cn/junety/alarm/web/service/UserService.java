@@ -123,7 +123,7 @@ public class UserService {
      * 创建用户
      * @param user 用户信息
      */
-    public void createUser(User user) {
+    public int createUser(User user) {
         // 添加用户
         user.setType(UserTypeEnum.NORMAL_USER.value());
         user.setIdentification(UUID.randomUUID().toString());
@@ -161,6 +161,8 @@ public class UserService {
         alarm.setRouteKey("com.alarm.*");
         alarm.setConfig("{\"freq_limit\":true,\"mail\":false,\"wechat\":true,\"sms\":false,\"qq\":false,\"debug_interval\":5,\"debug_times\":10,\"info_interval\":5,\"info_times\":10,\"error_interval\":5,\"error_times\":10}");
         alarmService.createAlarm(alarm);
+
+        return userId;
     }
 
     /**

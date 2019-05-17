@@ -7,16 +7,16 @@
         "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/wxuser&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
       }, {
         "type": "view",
+        "name": "我的项目",
+        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/wxproject&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
+      }, {
+        "type": "view",
         "name": "我的告警",
         "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/wxlog&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
       }]
   }, {
     "name": "告警中心",
       "sub_button": [{
-        "type": "view",
-        "name": "项目",
-        "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/wxproject&response_type=code&scope=snsapi_base&state=1#wechat_redirect"
-      }, {
         "type": "view",
         "name": "接收组",
         "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2b44d79da6a46efe&redirect_uri=http://laoyang.ngrok.xiaomiqiu.cn/wxgroup&response_type=code&scope=snsapi_base&state=1#wechat_redirect"

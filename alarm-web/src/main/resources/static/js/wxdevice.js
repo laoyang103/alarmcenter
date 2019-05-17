@@ -3,7 +3,7 @@ var search_input="";
 
 $(function() {
     // user create modal
-    $("#user-create").click(function () {
+    $("#user-device-create").click(function () {
         var user_account = $("#user-account").val();
         if (user_account.trim().length == 0) {
             alert("请输入用户账号");
@@ -28,20 +28,25 @@ $(function() {
             wechat: $("#user-wechat").val(),
             qq: $("#user-qq").val()
         };
-        var phy_data = {
-            wechat: $("#user-wechat").val(),
-            nics: $("#user-nics").val(),
+        var device_data = {
+            macs: $("#user-macs").val(),
             cpus: $("#user-cpus").val()
         };
-        $("#modal-user-create").modal('hide');
-        createUser(user_data);
-        if ("" != phy_data.nics || "" != phy_data.cpus) {
-          createUserPhy(phy_data);
-        }
+        createUserWithDevice(user_data, device_data);
+    });
+
+    $("#device-create").click(function () {
+        var device_data = {
+            userid: $("#user-userid").val(),
+            macs: $("#user-macs").val(),
+            cpus: $("#user-cpus").val()
+        };
+        bindDevice(device_data);
     });
 });
 
-function createUser(user_data) {
+function createUserWithDevice(user_data, device_data) {
+    var userid = ""
     $.ajax({
         url: "/register",
         type: "POST",
@@ -50,23 +55,38 @@ function createUser(user_data) {
         contentType: "application/json;charset=utf-8",
         success: function(data){
             if (data["code"] != 2000) {
+                userid = data["userid"]
                 alert("新建用户账号失败，原因:"+data["reason"]);
             }
-            window.location = "/wxlogin";
         }
     });
-}
-
-function createUserPhy(phy_data) {
+    device_data["userid"] = userid;
     $.ajax({
-        url: "/createUserPhy",
+        url: "/addDevice",
         type: "POST",
-        data: JSON.stringify(phy_data),
+        data: JSON.stringify(device_data),
         dataType: "json",
         contentType: "application/json;charset=utf-8",
         success: function(data){
             if (data["code"] != 2000) {
-                alert("新建用户设备账号失败，原因:"+data["reason"]);
+                alert("新建设备失败，原因:"+data["reason"]);
+            }
+        }
+    });
+}
+
+function bindDevice(device_data) {
+    $.ajax({
+        url: "/addDevice",
+        type: "POST",
+        data: JSON.stringify(device_data),
+        dataType: "json",
+        contentType: "application/json;charset=utf-8",
+        success: function(data){
+            if (data["code"] != 2000) {
+                alert("新建设备失败，原因:"+data["reason"]);
+            } else {
+                alert("绑定成功！");
             }
         }
     });
