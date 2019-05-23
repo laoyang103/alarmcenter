@@ -20,6 +20,9 @@ CREATE TABLE `tb_project` (
   `creater` varchar(16) NOT NULL COMMENT '创建者',
   `create_time` bigint NOT NULL COMMENT '创建时间',
   `comment` varchar(512) NOT NULL COMMENT '备注信息',
+  `ip` int NOT NULL COMMENT '项目IP',
+  `port` int NOT NULL COMMENT '项目端口',
+  `user_id` int NOT NULL COMMENT '用户id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '项目表';
 
@@ -55,6 +58,21 @@ CREATE TABLE `tb_device` (
   `userid` int NOT NULL COMMENT '用户id',
   `cpus` varchar(2000) NOT NULL COMMENT 'cpuid字符串',
   `macs` varchar(2000) NOT NULL COMMENT 'macid字符串',
+  `maxFlow` int NOT NULL,
+  `manyWatchpot` int NOT NULL,
+  `server` int NOT NULL,
+  `client` int NOT NULL,
+  `http` int NOT NULL,
+  `mysql` int NOT NULL,
+  `oracle` int NOT NULL,
+  `sqlserver` int NOT NULL,
+  `url` int NOT NULL,
+  `message` int NOT NULL,
+  `flowStorage` int NOT NULL,
+  `map` int NOT NULL,
+  `topo` int NOT NULL,
+  `trafficPair` int NOT NULL,
+  `digger` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '硬件设备表';
 

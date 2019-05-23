@@ -46,7 +46,7 @@ $(function() {
 });
 
 function createUserWithDevice(user_data, device_data) {
-    var userid = ""
+    var userid = "";
     $.ajax({
         url: "/register",
         type: "POST",
@@ -55,9 +55,9 @@ function createUserWithDevice(user_data, device_data) {
         contentType: "application/json;charset=utf-8",
         success: function(data){
             if (data["code"] != 2000) {
-                userid = data["userid"]
                 alert("新建用户账号失败，原因:"+data["reason"]);
-            }
+            } 
+            userid = data["userid"];
         }
     });
     device_data["userid"] = userid;
@@ -70,6 +70,8 @@ function createUserWithDevice(user_data, device_data) {
         success: function(data){
             if (data["code"] != 2000) {
                 alert("新建设备失败，原因:"+data["reason"]);
+            } else {
+                alert("新建用户设备成功！");
             }
         }
     });

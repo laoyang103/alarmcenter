@@ -5,8 +5,9 @@ package cn.junety.alarm.base.entity;
  */
 public class Project {
     private int id;
-    private int port;
     private int ip;
+    private int port;
+    private int userId;
     private String name;
     private String creater;
     private Long createTime;
@@ -68,12 +69,21 @@ public class Project {
         this.comment = comment;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", creater='" + creater + '\'' +
+                ", userId='" + userId + '\'' +
                 ", createTime=" + createTime +
                 ", comment='" + comment + '\'' +
                 '}';

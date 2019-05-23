@@ -115,11 +115,13 @@ public class WxPageController extends BaseController {
         String phys = request.getParameter("phys");
         String macs = phys.split("-")[0];
         String cpus = phys.split("-")[1];
-        model.addAttribute("userid", currentUser.getId());
+        if (null != currentUser) {
+          model.addAttribute("userid", currentUser.getId());
+          model.addAttribute("account", currentUser.getAccount());
+        }
         model.addAttribute("wxopenid", wxopenid);
         model.addAttribute("macs", macs);
         model.addAttribute("cpus", cpus);
-        model.addAttribute("account", currentUser.getAccount());
 
         logger.info("wxbindPhy user: " + currentUser + "macs=" + macs + "cpus=" + cpus);
 

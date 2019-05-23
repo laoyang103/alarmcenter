@@ -15,8 +15,8 @@ public interface ProjectDao {
     @Select("select * from tb_project where id=#{id}")
     Project getProjectById(@Param("id") int id);
 
-    @Insert("insert into tb_project(name, creater, create_time, comment, ip, port) " +
-            "values(#{name}, #{creater}, #{createTime}, #{comment}, #{ip}, #{port})")
+    @Insert("insert into tb_project(name, creater, create_time, comment, ip, port, user_id) " +
+            "values(#{name}, #{creater}, #{createTime}, #{comment}, #{ip}, #{port}, #{userId})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void save(Project project);
 

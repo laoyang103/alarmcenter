@@ -121,6 +121,7 @@ public class ProjectService {
      * @return 项目id
      */
     public int createProject(User user, Project project) {
+        project.setUserId(user.getId());
         project.setCreater(user.getName());
         project.setCreateTime(System.currentTimeMillis());
         projectDao.save(project);
