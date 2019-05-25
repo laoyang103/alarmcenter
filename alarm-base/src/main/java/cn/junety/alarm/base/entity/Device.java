@@ -23,6 +23,21 @@ public class Device {
   private int topo;
   private int trafficPair;
   private int digger;
+  private String validTerm;
+  private String manyTerm;
+  private String serverTerm;
+  private String clientTerm;
+  private String httpTerm;
+  private String mysqlTerm;
+  private String oracleTerm;
+  private String sqlserverTerm;
+  private String urlTerm;
+  private String messageTerm;
+  private String storeTerm;
+  private String mapTerm;
+  private String topoTerm;
+  private String pairTerm;
+  private String diggerTerm;
 
   public int getId() {
     return id;
@@ -153,5 +168,129 @@ public class Device {
   }
   public int getDigger() {
     return digger;
+  }
+  public String getValidTerm() {
+    return validTerm;
+  }
+  public void setValidTerm(String validTerm) {
+    this.validTerm = validTerm;
+  }
+  public String getManyTerm() {
+    return manyTerm;
+  }
+  public void setManyTerm(String manyTerm) {
+    this.manyTerm = manyTerm;
+  }
+  public String getServerTerm() {
+    return serverTerm;
+  }
+  public void setServerTerm(String serverTerm) {
+    this.serverTerm = serverTerm;
+  }
+  public String getClientTerm() {
+    return clientTerm;
+  }
+  public void setClientTerm(String clientTerm) {
+    this.clientTerm = clientTerm;
+  }
+  public String getHttpTerm() {
+    return httpTerm;
+  }
+  public void setHttpTerm(String httpTerm) {
+    this.httpTerm = httpTerm;
+  }
+  public String getMysqlTerm() {
+    return mysqlTerm;
+  }
+  public void setMysqlTerm(String mysqlTerm) {
+    this.mysqlTerm = mysqlTerm;
+  }
+  public String getOracleTerm() {
+    return oracleTerm;
+  }
+  public void setOracleTerm(String oracleTerm) {
+    this.oracleTerm = oracleTerm;
+  }
+  public String getSqlserverTerm() {
+    return sqlserverTerm;
+  }
+  public void setSqlserverTerm(String sqlserverTerm) {
+    this.sqlserverTerm = sqlserverTerm;
+  }
+  public String getUrlTerm() {
+    return urlTerm;
+  }
+  public void setUrlTerm(String urlTerm) {
+    this.urlTerm = urlTerm;
+  }
+  public String getMessageTerm() {
+    return messageTerm;
+  }
+  public void setMessageTerm(String messageTerm) {
+    this.messageTerm = messageTerm;
+  }
+  public String getStoreTerm() {
+    return storeTerm;
+  }
+  public void setStoreTerm(String storeTerm) {
+    this.storeTerm = storeTerm;
+  }
+  public String getMapTerm() {
+    return mapTerm;
+  }
+  public void setMapTerm(String mapTerm) {
+    this.mapTerm = mapTerm;
+  }
+  public String getTopoTerm() {
+    return topoTerm;
+  }
+  public void setTopoTerm(String topoTerm) {
+    this.topoTerm = topoTerm;
+  }
+  public String getPairTerm() {
+    return pairTerm;
+  }
+  public void setPairTerm(String pairTerm) {
+    this.pairTerm = pairTerm;
+  }
+  public String getDiggerTerm() {
+    return diggerTerm;
+  }
+  public void setDiggerTerm(String diggerTerm) {
+    this.diggerTerm = diggerTerm;
+  }
+
+  public String getModString() {
+    return 
+      "\r\nvalidterm="      + validTerm +
+      "\r\nmanyWatchpoint=" + manyWatchpoint +
+      "\r\nmanyTerm="       + manyTerm +
+      "\r\nmaxFlow="        + maxFlow +
+      "\r\nserver="         + server +
+      "\r\nserverTerm="     + serverTerm +
+      "\r\nclient="         + client +
+      "\r\nclientTerm="     + clientTerm +
+      "\r\nhttp="           + http +
+      "\r\nhttpTerm="       + httpTerm +
+      "\r\nmysql="          + mysql +
+      "\r\nmysqlTerm="      + mysqlTerm +
+      "\r\noracle="         + oracle +
+      "\r\noracleTerm="     + oracleTerm +
+      "\r\nsqlserver="      + sqlserver +
+      "\r\nsqlserverTerm="  + sqlserverTerm +
+      "\r\nurl="            + url +
+      "\r\nurlTerm="        + urlTerm +
+      "\r\nmessage="        + message +
+      "\r\nmessageTerm="    + messageTerm +
+      "\r\nflowStorage="    + flowStorage +
+      "\r\nstoreTerm="      + storeTerm +
+      "\r\nmap="            + map +
+      "\r\nmapTerm="        + mapTerm +
+      "\r\ntopo="           + topo +
+      "\r\ntopoTerm="       + topoTerm +
+      "\r\ntrafficPair="    + trafficPair +
+      "\r\npairTerm="       + pairTerm +
+      "\r\ndigger="         + digger +
+      "\r\ndiggerTerm="     + diggerTerm;
   }
 }

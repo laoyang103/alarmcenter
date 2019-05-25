@@ -73,6 +73,21 @@ CREATE TABLE `tb_device` (
   `topo` int NOT NULL,
   `trafficPair` int NOT NULL,
   `digger` int NOT NULL,
+  `allTerm` varchar(64) NOT NULL,                                                                                                                 
+  `manyTerm` varchar(64) NOT NULL,                                                                                                                 
+  `serverTerm` varchar(64) NOT NULL,
+  `clientTerm` varchar(64) NOT NULL,
+  `httpTerm` varchar(64) NOT NULL,
+  `mysqlTerm` varchar(64) NOT NULL,
+  `oracleTerm` varchar(64) NOT NULL,
+  `sqlserverTerm` varchar(64) NOT NULL,
+  `urlTerm` varchar(64) NOT NULL,
+  `messageTerm` varchar(64) NOT NULL,
+  `storeTerm` varchar(64) NOT NULL,
+  `mapTerm` varchar(64) NOT NULL,
+  `topoTerm` varchar(64) NOT NULL,
+  `pairTerm` varchar(64) NOT NULL,
+  `diggerTerm` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '硬件设备表';
 
