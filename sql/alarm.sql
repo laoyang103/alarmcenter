@@ -73,7 +73,7 @@ CREATE TABLE `tb_device` (
   `topo` int NOT NULL,
   `trafficPair` int NOT NULL,
   `digger` int NOT NULL,
-  `allTerm` varchar(64) NOT NULL,                                                                                                                 
+  `validTerm` varchar(64) NOT NULL,                                                                                                                 
   `manyTerm` varchar(64) NOT NULL,                                                                                                                 
   `serverTerm` varchar(64) NOT NULL,
   `clientTerm` varchar(64) NOT NULL,
