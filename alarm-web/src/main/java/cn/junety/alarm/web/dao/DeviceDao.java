@@ -12,6 +12,12 @@ import java.util.List;
  */
 public interface DeviceDao {
 
+  @Select("select * from tb_device")
+  List<Device> getAllDevice();
+
+  @Select("select * from tb_device where id=#{id}")
+  Device getDeviceById(int id);
+
   @Select("select * from tb_device where userid=#{user.id}")
   List<Device> getDeviceByUser(User user);
 

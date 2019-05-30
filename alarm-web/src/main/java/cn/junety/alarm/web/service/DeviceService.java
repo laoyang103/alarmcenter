@@ -68,7 +68,19 @@ public class DeviceService {
   }
 
   public List<Device> getDeviceByUser(User user) {
-    return deviceDao.getDeviceByUser(user);
+    List<Device> devices = null;
+    if (0 == user.getType()) {
+      logger.debug("get all device info, user:{}", user);
+      devices = deviceDao.getAllDevice();
+    } else {
+      logger.debug("get user device info, user:{}", user);
+      devices = deviceDao.getDeviceByUser(user);
+    }
+    return devices;
+  }
+
+  public Device getDeviceById(int id) {
+    return deviceDao.getDeviceById(id);
   }
 
   public int save(Device device) {
