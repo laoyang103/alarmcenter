@@ -108,27 +108,49 @@ public class WxPageController extends BaseController {
     }
 
     @RequestMapping(value = "/wxqrcode", method = RequestMethod.GET)
-      public ModelAndView toQrcodePage(HttpServletRequest request, Model model) {
-        User currentUser = getUser(request);
+    public ModelAndView toQrcodePage(HttpServletRequest request, Model model) {
+      User currentUser = getUser(request);
 
-        String wxopenid = request.getParameter("wxopenid");
-        String phys = request.getParameter("phys");
-        String macs = phys.split("-")[0];
-        String cpus = phys.split("-")[1];
-        if (null != currentUser) {
-          model.addAttribute("userid", currentUser.getId());
-          model.addAttribute("account", currentUser.getAccount());
-        }
-        model.addAttribute("wxopenid", wxopenid);
-        model.addAttribute("macs", macs);
-        model.addAttribute("cpus", cpus);
-
-        logger.info("wxbindPhy user: " + currentUser + "macs=" + macs + "cpus=" + cpus);
-
-        if (null == currentUser) {
-          return new ModelAndView("wxbindUserDevice");
-        } else {
-          return new ModelAndView("wxbindDevice");
-        }
+      String wxopenid = request.getParameter("wxopenid");
+      String phys = request.getParameter("phys");
+      String macs = phys.split("-")[0];
+      String cpus = phys.split("-")[1];
+      if (null != currentUser) {
+        model.addAttribute("userid", currentUser.getId());
+        model.addAttribute("account", currentUser.getAccount());
       }
+      model.addAttribute("wxopenid", wxopenid);
+      model.addAttribute("macs", macs);
+      model.addAttribute("cpus", cpus);
+
+      logger.info("wxbindPhy user: " + currentUser + "macs=" + macs + "cpus=" + cpus);
+
+      if (null == currentUser) {
+        return new ModelAndView("wxbindUserDevice");
+      } else {
+        return new ModelAndView("wxbindDevice");
+      }
+    }
+
+    @RequestMapping(value = "/wxdevice", method = RequestMethod.GET)
+    public ModelAndView toDevicePage(HttpServletRequest request, Model model) {
+        User currentUser = getUser(request);
+        logger.info("GET /wxdevice, current_user:{}", currentUser);
+
+        model.addAttribute("current_user", currentUser);
+
+        return new ModelAndView("wxdevice");
+    }
+
+    @RequestMapping(value = "/wxdeviceDetail", method = RequestMethod.GET)
+    public ModelAndView todeviceDetailPage(HttpServletRequest request, Model model) {
+        User currentUser = getUser(request);
+        String did = request.getParameter("did");
+        logger.info("GET /wxdeviceDetail, current_user:{}", currentUser);
+
+        model.addAttribute("did", did);
+        model.addAttribute("current_user", currentUser);
+
+        return new ModelAndView("wxdeviceDetail");
+    }
 }
