@@ -90,7 +90,7 @@ $(function() {
             name: user_name,
             mail: $("#user-mail").val(),
             phone: $("#user-phone").val(),
-            wechat: $("#user-wechat").val(),
+            wechat: $("#user-wechat").val()
         };
         
         createUserWithDevice(user_data, device_data);
@@ -141,3 +141,26 @@ function bindDevice(device_data) {
         }
     });
 }
+
+
+function  getDeviceData(){
+	$.ajax({
+	    url: "/getDeviceList",
+	    type: "GET",
+	    success: function(data) {
+	    	var html = "";
+	    	var device_list = data["device_list"];
+	    	for(var i = 0; i < device_list.length; i++){
+	    		var device  = device_list[i];
+	    		html += "<a class=\"weui-cell weui-cell_access\" href=\"/wxdeviceDetail?did="+ device.id +"\">";
+	    		html += "<div class=\"weui-cell__bd\">";
+	    		html += "<p>"+ device.id +"</p>";
+	    		html += "</div>";
+	    		html += "<div class=\"weui-cell__ft\">";
+	    		html += "</div></a>";
+	    	}
+	    	$("#deviceId").html(html);
+	    }
+	  });
+}
+getDeviceData();
