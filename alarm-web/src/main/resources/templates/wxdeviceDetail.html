@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<title>设备列表详情</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"></meta>
+<link rel="stylesheet" href="/css/weui.css"/>
+<link rel="stylesheet" href="/css/weuix.css"/>
+
+<script src="/js/zepto.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/base.js"></script>
+<script src="/js/wxdeviceDetail.js"></script>
+
+</head>
+
+
+<body>
+
+<input id="did" type="hidden" th:value="${did}" />
+
+<div class="page-hd">
+  <h1 class="page-hd-title">
+    设备列表详情
+  </h1>
+  <p class="page-hd-desc"></p>
+</div>
+
+<div class="page-bd">
+
+  <div class="weui-cells__title">设备列表详情</div>
+  <div class="weui-cells">
+    <span id="deviceDetail"></span>
+  </div>
+</div>
+
+<div style="margin-top: 1%;margin-bottom: 1%;">
+            <div class="button-sp-area">
+                <a class="weui-btn weui-btn_block weui-btn_primary" href="/wxdevice">返回</a>
+            </div>
+        </div>
+</body>
+</html>
