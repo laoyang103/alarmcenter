@@ -79,6 +79,7 @@ $(function() {
         	alert("请选择模块");
             return;
         }
+        device_data["devname"] = $("#user-devname").val();
         device_data["macs"] = $("#user-macs").val();
         device_data["cpus"] = $("#user-cpus").val();
         device_data["maxFlow"] = parseInt(maxFlow);
@@ -137,6 +138,7 @@ function bindDevice(device_data) {
                 alert("新建设备失败，原因:"+data["reason"]);
             } else {
                 alert("绑定成功！");
+                location.href="/wxdevice";
             }
         }
     });
@@ -154,7 +156,7 @@ function  getDeviceData(){
 	    		var device  = device_list[i];
 	    		html += "<a class=\"weui-cell weui-cell_access\" href=\"/wxdeviceDetail?did="+ device.id +"\">";
 	    		html += "<div class=\"weui-cell__bd\">";
-	    		html += "<p>"+ device.id +"</p>";
+	    		html += "<p>"+ device.devname+"</p>";
 	    		html += "</div>";
 	    		html += "<div class=\"weui-cell__ft\">";
 	    		html += "</div></a>";

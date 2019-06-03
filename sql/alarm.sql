@@ -56,6 +56,7 @@ CREATE TABLE `tb_group_member` (
 CREATE TABLE `tb_device` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userid` int NOT NULL COMMENT '用户id',
+  `devname` varchar(200) NOT NULL COMMENT '设备名称',
   `cpus` varchar(2000) NOT NULL COMMENT 'cpuid字符串',
   `macs` varchar(2000) NOT NULL COMMENT 'macid字符串',
   `maxFlow` int NOT NULL,

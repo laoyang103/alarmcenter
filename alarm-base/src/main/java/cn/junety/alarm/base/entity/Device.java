@@ -6,6 +6,7 @@ package cn.junety.alarm.base.entity;
 public class Device {
   private int id;
   private int userid;
+  private String devname;
   private String cpus;
   private String macs;
   private int maxFlow;
@@ -50,6 +51,13 @@ public class Device {
   }
   public void setUserid(int userid) {
     this.userid = userid;
+  }
+
+  public String getDevname() {
+    return devname;
+  }
+  public void setDevname(String devname) {
+    this.devname = devname;
   }
 
   public String getCpus() {

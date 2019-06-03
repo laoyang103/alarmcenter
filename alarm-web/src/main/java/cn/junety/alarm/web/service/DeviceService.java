@@ -35,7 +35,7 @@ public class DeviceService {
     String userInfoStr = "", sysInfoStr = "";
 
     User user = userDao.getUserById(device.getUserid());
-    userInfoStr += "\r\nuserName=" + user.getAccount();
+    userInfoStr += "\r\nuserName=" + device.getDevname();
     userInfoStr += "\r\ncontacts=" + user.getName();
     userInfoStr += "\r\ntelephone=" + user.getPhone();
     userInfoStr += "\r\nemail=" + user.getMail();
@@ -74,7 +74,7 @@ public class DeviceService {
       devices = deviceDao.getAllDevice();
     } else {
       logger.debug("get user device info, user:{}", user);
-      devices = deviceDao.getDeviceByUser(user);
+      devices = deviceDao.getDeviceByUser(user.getId());
     }
     return devices;
   }
