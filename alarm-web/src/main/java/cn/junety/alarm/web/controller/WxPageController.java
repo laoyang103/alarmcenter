@@ -111,8 +111,8 @@ public class WxPageController extends BaseController {
     public ModelAndView toQrcodePage(HttpServletRequest request, Model model) {
       User currentUser = getUser(request);
 
-      String wxopenid = request.getParameter("wxopenid");
-      String phys = request.getParameter("phys");
+      String wxopenid = (String )request.getAttribute("wxopenid");
+      String phys = (String )request.getAttribute("phys");
       String macs = phys.split("-")[0];
       String cpus = phys.split("-")[1];
       if (null != currentUser) {

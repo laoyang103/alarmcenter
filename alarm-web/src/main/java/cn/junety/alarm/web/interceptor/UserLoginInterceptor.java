@@ -50,6 +50,8 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
     if (user == null) {
       logger.debug("login status check fail, identification:{}", identification);
       if (null != wxopenid && null != phys) {
+        request.setAttribute("wxopenid", wxopenid);
+        request.setAttribute("phys", phys);
         return true;
       } else if (null != wxopenid) {
         response.sendRedirect("/wxregister?" + "wxopenid=" + wxopenid);
