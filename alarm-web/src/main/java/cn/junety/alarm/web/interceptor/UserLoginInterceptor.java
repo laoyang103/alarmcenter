@@ -32,6 +32,7 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
     String identification = userLoginStatusService.getIdentificationFromLoginStatus(request);
     User user = userService.getUserByIdentification(identification);
 
+    String phys = request.getParameter("phys");
     String code = request.getParameter("code");
     String wxopenid = request.getParameter("wxopenid");
     logger.info("get wechat by code: " + code);
@@ -48,7 +49,9 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
 
     if (user == null) {
       logger.debug("login status check fail, identification:{}", identification);
-      if (null != wxopenid) {
+      if (null != wxopenid && null != phys) {
+        return true;
+      } else if (null != wxopenid) {
         response.sendRedirect("/wxregister?" + "wxopenid=" + wxopenid);
       } else {
         response.sendRedirect("/login");

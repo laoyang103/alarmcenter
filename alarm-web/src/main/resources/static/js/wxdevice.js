@@ -97,14 +97,56 @@ $(function() {
         createUserWithDevice(user_data, device_data);
     });
 
+
     $("#device-create").click(function () {
-        var device_data = {
-            userid: $("#user-userid").val(),
-            macs: $("#user-macs").val(),
-            cpus: $("#user-cpus").val()
-        };
+        var time = $("#time").val();
+        if (time.trim().length == 0) {
+            alert("请输入日期");
+            return;
+        }else {
+        	var d = new Date(time);
+        	time = d.getTime() / 1000;
+        }
+        
+        var maxFlow = $("#maxFlow").val();
+        if (maxFlow.trim().length == 0) {
+            alert("请输入最大分析流量");
+            return;
+        }else{
+        	var re = /^[0-9]+.?[0-9]*/;
+        	if(!re.test(maxFlow)){
+        		alert("最大分析流量只能输入数字");
+                return;
+        	}
+        }
+        
+        var box = document.getElementsByName('checkbox')
+        var device_data = {};
+        var checkedIndex = 0; 
+        for(var i = 0; i <box.length; i++){
+        	if(box[i].checked){
+        		checkedIndex = 1;
+        		device_data[box[i].value] = 1;
+        	}else{
+        		device_data[box[i].value] = 0;
+        	}
+        }
+        
+        if(checkedIndex == 0 ){
+        	alert("请选择模块");
+            return;
+        }
+        device_data["userid"] = $("#user-userid").val();
+        device_data["devname"] = $("#user-devname").val();
+        device_data["macs"] = $("#user-macs").val();
+        device_data["cpus"] = $("#user-cpus").val();
+        device_data["maxFlow"] = parseInt(maxFlow);
+        device_data["validTerm"] = time;
+        
         bindDevice(device_data);
     });
+
+
 });
 
 function createUserWithDevice(user_data, device_data) {
@@ -138,7 +180,6 @@ function bindDevice(device_data) {
                 alert("新建设备失败，原因:"+data["reason"]);
             } else {
                 alert("绑定成功！");
-                location.href="/wxdevice";
             }
         }
     });

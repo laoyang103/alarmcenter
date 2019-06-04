@@ -23,7 +23,6 @@ public class InterceptorsConfiguration extends WebMvcConfigurerAdapter {
       .excludePathPatterns("/wxsvc")
       .excludePathPatterns("/*login")
       .excludePathPatterns("/*register")
-      .excludePathPatterns("/*qrcode")
       .excludePathPatterns("/*Device")
       .excludePathPatterns("/monitor/**");
     super.addInterceptors(registry);
