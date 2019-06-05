@@ -2,6 +2,7 @@ package cn.junety.alarm.web.service;
 
 import cn.junety.alarm.base.entity.User;
 import cn.junety.alarm.base.entity.Device;
+import cn.junety.alarm.base.util.FileUtil;
 import cn.junety.alarm.web.dao.UserDao;
 import cn.junety.alarm.web.dao.DeviceDao;
 import org.slf4j.Logger;
@@ -22,6 +23,8 @@ import java.util.List;
 @Service
 public class DeviceService {
 
+  private String LICENSE_PATH = "/data/kpi/license/";
+
   private Logger logger = LoggerFactory.getLogger(UserService.class);
 
   @Autowired
@@ -30,7 +33,7 @@ public class DeviceService {
   @Autowired
   private UserDao userDao;
 
-  private int genSysinfoFile(Device device, String filePath) {
+  private String mkSysinfoFile(Device device, String filePath) {
     int i;
     String userInfoStr = "", sysInfoStr = "";
 
@@ -39,6 +42,7 @@ public class DeviceService {
     userInfoStr += "\r\ncontacts=" + user.getName();
     userInfoStr += "\r\ntelephone=" + user.getPhone();
     userInfoStr += "\r\nemail=" + user.getMail();
+    userInfoStr += "\r\nvalidterm=" + device.getValidTerm();
 
     String cpus = device.getCpus();
     String[] cpuArray = cpus.split("_");
@@ -60,10 +64,18 @@ public class DeviceService {
       FileWriter fileWritter = new FileWriter(devinfoFile.getName(), true);
       fileWritter.write(userInfoStr + device.getModString() + sysInfoStr);
       fileWritter.close();
-      return 0;
+      return filePath;
     }catch(IOException e){
       e.printStackTrace();
-      return 1;
+      return null;
+    }
+  }
+
+  private String mkLicenseFile(String sysinfoFile, String validTerm) {
+    try {
+      FileUtil.getShellData("mklicense -f " + sysinfoFile + " -t " + validTerm);
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -84,6 +96,13 @@ public class DeviceService {
   }
 
   public int save(Device device) {
+    String infoPath, licensePath, fileName;
+    fileName = LICENSE_PATH + device.getDevname() + "_" + device.getMacs() + "_" + device.getValidTerm();
+    infoPath = fileName + ".INFO";
+    licensePath = fileName + ".license";
+
+    String sysinfoFile = this.mkSysinfoFile(device, infoPath);
+    this.mkLicenseFile(sysinfoFile, device.getValidTerm());
     return deviceDao.save(device);
   }
 
